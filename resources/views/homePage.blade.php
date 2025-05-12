@@ -30,7 +30,7 @@
     <div class="home" id="home">
       <div class="home-content">
         <!-- Logo -->
-        <img src="logo.png" alt="Logo" class="logo">
+        <img src="{{ asset('images/homePage/logo.png') }}" alt="Logo" class="logoatas">
     
         <!-- Judul besar dengan tulisan berwarna merah -->
         <h1>Spotless, Speed, <span class="win">Win</span></h1>
@@ -51,7 +51,7 @@
       <img class="rectangle" src="../assets/elements/Rectangle5.png" alt="" />
       <img class="rectangle" src="../assets/elements/Rectangle6.png" alt="" />
       <img class="rectangle" src="../assets/elements/Rectangle7.png" alt="" />
-      <img class="thumbnail" src="mobilmngkilap.jpg" alt="" />
+      <img class="thumbnail" src="{{ asset('images/homePage/mobilmngkilap.jpg') }}" alt="" />
     </div>
     
 
@@ -68,7 +68,7 @@
         </p>
         <a class="learn-more-button" href="">LEARN MORE</a>
       </div>
-      <img class="thumbnail" src="mobil.png" alt="" />
+      <img class="thumbnail" src="{{ asset('images/homePage/mobil.png') }}" alt="" />
       <div class="back-shadow"></div>
     </div>
 
@@ -103,7 +103,7 @@
           </div>
         </div>
         <div class="middle">
-            <img src="gojek.png" alt="">
+            <img src="{{ asset('images/homePage/gojek.png') }}">
             <img src="https://i1.wp.com/mobiklin.id/wp-content/uploads/2020/09/MOBI-LOGOTYPE-SCREEN-3.png?fit=1200%2C372&ssl=1" alt="">
           <p>
             All Rights Reserved. WashWiz logo and design are trademarks of WashWiz in Indonesia and/or other countries.
