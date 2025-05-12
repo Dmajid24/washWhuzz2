@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -9,3 +10,10 @@ Route::get('/', function () {
 Route::get('/homePage', function () {
     return view('homePage');
 });
+Route::get('/', [authController::class, 'login']);
+
+Route::get('/register', [authController::class, 'register']);
+
+Route::post('/insertUser', [authController::class, 'insertUser']);
+
+Route::post('/checklogin', [authController::class, 'checklogin']);
