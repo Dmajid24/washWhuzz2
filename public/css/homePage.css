@@ -19,6 +19,11 @@ nav {
   height: auto;
 }
 
+.logobwh {
+    width: 900px;  /* Ukuran logo yang lebih kecil agar sesuai dengan teks */
+    height: auto;
+  }
+  
 h1 {
   font-family: 'Magneto', cursive;
   font-size: 25px;  /* Menyesuaikan ukuran teks dengan ukuran logo */

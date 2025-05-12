@@ -55,6 +55,7 @@ nav ul li a{
 /* footer */
 footer{
     position: relative;
+    align-items: end;
 }
 .footer-shadow{
     position: absolute;
@@ -88,7 +89,8 @@ footer{
     align-self: center;
 }
 footer .middle{
-    width: 600px;
+   
+    gap: 20px;
 }
 footer img{
     width: 100%;
@@ -97,10 +99,10 @@ strong{
     color: #CD0303;
 }
 .middle img{
-    display: inline-flex;
+    display: flex;
+    width: 600px;
     width: 300px;
-    gap: 20px;
-    flex-direction: row;
+
 }
 .policies{
     margin: auto;
