@@ -1,133 +1,305 @@
-body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #000;
-    color: #fff;
+/* Menata navigasi */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #333;
+  color: white;
 }
 
-header {
-    background: #111;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Menata logo dan nama WashWiz */
+.logo-container {
+  display: flex;
+  align-items: center;
 }
 
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
+.logoatas {
+  width: 90px;  /* Ukuran logo yang lebih kecil agar sesuai dengan teks */
+  height: auto;
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #f04848;
+h1 {
+  font-family: 'Magneto', cursive;
+  font-size: 25px;  /* Menyesuaikan ukuran teks dengan ukuran logo */
+  font-weight: bold;
+  margin: 0;
+  color: white;
 }
 
-nav ul {
-    display: flex;
-    gap: 1rem;
-    list-style: none;
+/* Menata menu navigasi */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
 }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
+ul li {
+  margin: 0 20px;
 }
 
-.btn {
-    background-color: #f04848;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    border: none;
-    text-decoration: none;
-    border-radius: 5px;
+ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  transition: color 0.3s;
 }
 
-.hero {
-    background: url('car-wash-hero.jpg') center/cover no-repeat;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+ul li a:hover {
+  color: #cd0303; /* Memberikan efek hover berwarna merah */
+}
+
+/* Menata tombol download */
+.button-download {
+  background-color: #cd0303;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.button-download:hover {
+  background-color: #9b0202; /* Efek hover pada tombol download */
+}
+
+.home{
     position: relative;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.home-content{
+    align-items: center;
+    z-index: 2;
+    position: absolute;
+    color: white;
+}
+/* Mengatur body dan font dasar */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
 }
 
-.hero .overlay {
-    background-color: rgba(0,0,0,0.6);
-    padding: 2rem;
+/* Container utama */
+.home {
+  position: relative;
+  text-align: center;
+  padding: 50px 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Mengatur bagian konten utama */
+.home-content {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  z-index: 2;
+  width: 90%;
+  max-width: 800px;
+  text-align: center;
+}
+
+/* Logo */
+.logo {
+  max-width: 500px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* Judul besar dengan tulisan berwarna merah */
+h1 {
+  font-size: 60px;
+  margin: 0;
+  font-weight: bold;
+}
+
+h1 .win {
+  color: red;
+}
+
+/* Deskripsi kecil */
+p {
+  font-size: 18px;
+  color: #ddd;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  padding: 0 20px;
+}
+
+/* Tombol Explore Our Packages */
+.trailer-button a {
+  font-size: 20px;
+  padding: 12px 25px;
+  background-color: red;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  border: 2px solid transparent;
+}
+
+/* Efek hover pada tombol */
+.trailer-button a:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* Gambar-gambar lainnya */
+.rectangle {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+.rectangle:nth-of-type(1) {
+  left: 0;
+}
+
+.rectangle:nth-of-type(2) {
+  right: 0;
+}
+
+.thumbnail {
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  object-fit: cover;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 768px) {
+  .home-content {
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .trailer-button a {
+    font-size: 18px;
+    padding: 10px 20px;
+  }
+}
+
+.home-content .trailer-button a{
+    margin-left: 30px;
     text-align: center;
+    text-decoration: none;
+    margin: auto;
+    width: fit-content;
+    border: solid white;
+    color: white;
+    font-size: 30px;
+    border-width: 4px;
+    padding: 5px 20px;
+    transition: ease-in-out 0.4s;
+    cursor: default;
+}
+
+.home-content .trailer-button a:hover{
+    box-shadow: inset 330px 0 0 0  #CD0303;
+    border-color: #CD0303;
+}
+.home .rectangle{
+    z-index: 9;
+    position: absolute;
+    height: 100%;
+}
+.rectangle:nth-of-type(1){
+    left: 0;
+}
+.rectangle:nth-of-type(2){
+    right: 0;
+}
+.rectangle:nth-of-type(3){
+    left: 0;
+}
+.thumbnail{
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+
+.thumbnail::before {
+    background-color: rgb(0, 0, 0, 0.2);
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    content: "";
+}
+.segment-2{
+    position: relative;
+    align-items: center;
+}
+.segment-2 .content-text{
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 50px;
+    color: white;
+    width: 400px;
+    text-align: end;
+    align-items: end;
+}
+.segment-2 .content-text h1{
+    font-size: 70px;
+    margin: 0;
+}
+.segment-2 .content-text .segment-button{
+    color: #CD0303;
+    text-decoration: none;
+    background-color: #EBFF00;
+    padding: 5px 20px;
+    font-size: 30px;
+    border-radius: 10px;
+}
+.segment-2 .content-text p{
+    width: 400px;
+}
+.segment-2 .learn-more-button {
+    color: #0D0E22;
+    text-decoration: none;
+    background-color: #d9d9d9;
+    font-size: 20px;
+    padding: 10px 20px;
     border-radius: 10px;
 }
 
-.season {
-    background: #111;
-    padding: 4rem 2rem;
-    text-align: center;
-}
-
-.btn.secondary {
-    background-color: #ffd700;
-    color: #000;
-}
-
-.membership {
-    display: flex;
-    justify-content: space-around;
-    padding: 4rem 2rem;
-    background-color: #222;
-    gap: 2rem;
-    flex-wrap: wrap;
-    text-align: center;
-}
-
-.membership div {
-    flex: 1;
-    max-width: 400px;
-}
-
-.subscribe {
-    background-color: #111;
-    padding: 3rem 2rem;
-    text-align: center;
-}
-
-.subscribe input[type="email"] {
-    padding: 0.5rem;
-    width: 250px;
-    border-radius: 5px;
-    border: none;
-    margin-right: 0.5rem;
-}
-
-.subscribe button {
-    padding: 0.5rem 1rem;
-    background-color: #f04848;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-}
-
-footer {
-    background-color: #000;
-    padding: 2rem;
-    text-align: center;
-}
-
-.footer-content {
-    max-width: 800px;
-    margin: auto;
-}
-
-.social-icons img {
-    width: 24px;
-    margin: 0 0.5rem;
-}
-
-.partners {
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    color: #888;
+/* responsive */
+@media screen and (max-width: 768px){
+    .home-content{
+        display: flex;
+        flex-direction: column;
+    }
+    .segment-2 .content-text{
+        width: 90%;
+        right: 10px;
+        text-align: start;
+    }
+    .segment-2 .content-text h1{
+        font-size: 60px;
+    }
+    .home-content img{
+        width: 50%;
+    }
+    .home-content .trailer-button a{
+        font-size: 20px;
+    }
+    .segment-2 .content-text h1{
+        font-size: 50px;
+    }
 }
