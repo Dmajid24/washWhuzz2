@@ -14,7 +14,6 @@ class authController extends Controller
 
     public function insertUser(Request $req){
 
-        
         $req->validate([
             'name' => 'required|max:255',
             'email' => 'required|unique:users|max:255',
@@ -39,25 +38,25 @@ class authController extends Controller
         ]);
         
         
-        return redirect('/')->with('success', 'Registrasion Successfull');
+        return redirect('/login')->with('success', 'Registrasion Successfull');
     }
 
     public function login(Request $req){
         return view('login');
     }
 
-    public function checklogin(Request $req){
-        if(!Auth::attempt([
-            'username' => $req->username, 
-            'password' => $req->password
-        ])){
-            return redirect('/')
-            ->with('error', 'Username atau password salah!');
-        }else{
-            return redirect('/dashboard');
-        }   
-    }
+        public function checklogin(Request $req){
+            if(!Auth::attempt([
+                'username' => $req->username, 
+                'password' => $req->password
+            ])){
+                return redirect('/')
+                ->with('error', 'Username atau password salah!');
+            }else{
+                return redirect('/dashboard');
+            }   
+        }
 
-}
+    }
 
 

@@ -137,7 +137,7 @@
                     
                 </div>
                 <p class="mt-2 text-white text-sm">
-                        Already have an account? <a href="/" class="text-blue-400">Login</a> now
+                        Already have an account? <a href="/login" class="text-blue-400">Login</a> now
                 </p>
             </form>
         </div>

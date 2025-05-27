@@ -10,7 +10,7 @@ Route::get('/', function () {
 Route::get('/homePage', function () {
     return view('homePage');
 });
-Route::get('/', [authController::class, 'login']);
+Route::get('/login', [authController::class, 'login']);
 
 Route::get('/register', [authController::class, 'register']);
 
