@@ -56,7 +56,7 @@ ul li a:hover {
 }
 
 /* Menata tombol download */
-.button-download {
+.button-login {
   background-color: #cd0303;
   padding: 10px 20px;
   color: white;
@@ -65,7 +65,7 @@ ul li a:hover {
   font-size: 18px;
 }
 
-.button-download:hover {
+.button-login:hover {
   background-color: #9b0202; /* Efek hover pada tombol download */
 }
 

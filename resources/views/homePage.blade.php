@@ -20,14 +20,13 @@
             </div>
             <ul>
               <li><a style="color: #cd0303" href="./index.html">HOME</a></li>
-              <li><a href="./product.html">PRODUCTS</a></li>
-              <li><a href="./news.html">NEWS</a></li>
-              <li><a href="./esport.html">ESPORTS</a></li>
-              <li><a class="button-download" href="https://www.xbox.com/id-ID/games/store/asphalt-9-legends/9nzqpt0mwtd0?activetab=pivot:overviewtab&rtc=1">JOIN US</a></li>
+              <li><a href="./product.html">About Us</a></li>
+              <li><a href="./news.html">Product</a></li>
+              <li><a href="./esport.html">Order</a></li>
+              <li><a class="button-login" href="./login.html">Join Us</a></li>
             </ul>
           </nav>
           
-      
           <div class="home" id="home">
             <div class="home-content">
               <!-- Logo -->
