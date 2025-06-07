@@ -3,9 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
-Route::get('/', [authController::class, 'login']);
+Route::get('/login', [authController::class, 'login']);
 
 Route::get('/register', [authController::class, 'register']);
+
+
 
 Route::post('/insertUser', [authController::class, 'insertUser']);
 
@@ -17,3 +19,7 @@ Route::get('/', function () {
 Route::get('/homePage', function () {
     return view('homePage');
 });
+Route::get('/profile', function () {
+    return view('profile');
+});
+

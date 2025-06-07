@@ -22,7 +22,7 @@
         <li><a href="./product.html">PRODUCTS</a></li>
         <li><a href="./news.html">NEWS</a></li>
         <li><a href="./esport.html">ESPORTS</a></li>
-        <li><a class="button-download" href="https://www.xbox.com/id-ID/games/store/asphalt-9-legends/9nzqpt0mwtd0?activetab=pivot:overviewtab&rtc=1">JOIN US</a></li>
+        <li><a class="button-download" href="login">JOIN US</a></li>
       </ul>
     </nav>
     
@@ -79,7 +79,7 @@
             <h1>
               ARE YOU READY TO <strong style="color: #cd0303">Shine?</strong>
             </h1>
-            <a class="footer-button" href="./subscription.html">SIGN ME UP</a>
+            <a class="footer-button" href="register">SIGN ME UP</a>
           </div>
           <div class="social">
             <a href="https://discord.com/invite/asphalt9" target="_blank">
