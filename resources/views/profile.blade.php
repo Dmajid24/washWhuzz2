@@ -15,7 +15,7 @@
 
   <nav>
     <div class="logo-container">
-      <img src="logo.png" alt="Logo" />
+      <img src="{{ asset('images/profile/logo.png') }}" alt="Logo" />
       <a href="#" class="logo-text">WashWhuuz</a>
     </div>
     <ul>
@@ -38,7 +38,7 @@
         <p>UserName@gmail.com</p>
         <p>+62138953673</p>
         <p>Alamat</p>
-        <button class="edit-btn" onclick="window.location.href = 'EditProfile.html'">Edit Profile</button>
+        <button class="edit-btn" onclick="window.location.href = '/editProfile'">Edit Profile</button>
       </div>
     </div>
 

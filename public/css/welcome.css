@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  padding: 0;
+background: url('file:///C:/Users/salsa/Downloads/Syau/semester%204/Software%20Engineering/jean/download%20(1).jpg') no-repeat center center/cover;
+
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: white;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.red-italic {
+  color: red;
+  font-style: italic;
+}
+
+.subtitle {
+  color: #fff;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.button-group {
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  padding: 12px 24px;
+  background-color: #fbd104;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.btn:hover {
+  background-color: #c92222;
+  color: white;
+}
+ a.btn {
+      text-decoration: none;
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #fbd104;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+    }
+
+    a.btn:hover {
+      background-color: #c92222;
+      color: white;
+    }
