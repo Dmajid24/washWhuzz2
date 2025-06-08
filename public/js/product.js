@@ -26,7 +26,7 @@ function showProducts(category) {
                    
                     <h3>${product.name}</h3>
                     <div class="productL">${product.description}</div> 
-                    <div class="price"><strong>Price: ${product.price}</strong></div>
+                    <div class="price">Price: ${product.price}</div>
                 </div>
                 <button clas="addButton">Add</button>
                 `;
