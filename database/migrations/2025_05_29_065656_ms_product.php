@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('ms_product', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description')->nullable();
-            $table->decimal('price', 100, 2);
+            $table->text('description') ->nullable();
+            $table->integer('price');
+            $table->string('image');
+            $table->string('category');
             $table->timestamps();
         });
     }

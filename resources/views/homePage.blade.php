@@ -20,7 +20,7 @@
             </div>
             <ul>
               <li><a style="color: #cd0303" href="./index.html">HOME</a></li>
-              <li><a href="./product.html">PRODUCTS</a></li>
+              <li><a href="./product">PRODUCTS</a></li>
               <li><a href="./news.html">NEWS</a></li>
               <li><a href="./esport.html">ESPORTS</a></li>
               <li><a class="button-download" href="/login">JOIN US</a></li>

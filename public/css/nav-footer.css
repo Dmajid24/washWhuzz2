@@ -18,13 +18,17 @@ body > * {
 nav{
     flex-direction: row;
     position: fixed;
-    z-index: 10;
     top: 0;
     width: 100%;
     height: 74px;
     align-items: center;
     justify-content: space-between;
     box-shadow: inset  0px 30px 40px 0px black;
+    display: flex;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    z-index: 9999;  /* Menjaga navbar tetap di atas konten */
 }
 
 nav h1{
