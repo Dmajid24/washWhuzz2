@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap');
+
 /* Menata navigasi */
 nav {
   display: flex;
@@ -26,10 +28,13 @@ nav {
   
 h1 {
   font-family: 'Magneto', cursive;
-  font-size: 25px;  /* Menyesuaikan ukuran teks dengan ukuran logo */
   font-weight: bold;
   margin: 0;
   color: white;
+}
+
+p, nav {
+  font-family: 'Overpass', sans-serif;
 }
 
 /* Menata menu navigasi */
@@ -56,7 +61,7 @@ ul li a:hover {
 }
 
 /* Menata tombol download */
-.button-download {
+.button-login {
   background-color: #cd0303;
   padding: 10px 20px;
   color: white;
@@ -65,56 +70,16 @@ ul li a:hover {
   font-size: 18px;
 }
 
-.button-download:hover {
+.button-login:hover {
   background-color: #9b0202; /* Efek hover pada tombol download */
 }
 
-.home{
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.3);
-}
-.home-content{
-    align-items: center;
-    z-index: 2;
-    position: absolute;
-    color: white;
-}
 /* Mengatur body dan font dasar */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Overpass', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
-}
-
-/* Container utama */
-.home {
-  position: relative;
-  text-align: center;
-  padding: 50px 0;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-/* Mengatur bagian konten utama */
-.home-content {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  z-index: 2;
-  width: 90%;
-  max-width: 800px;
-  text-align: center;
-}
-
-/* Logo */
-.logo {
-  max-width: 500px;
-  height: auto;
-  margin-bottom: 20px;
+  overflow-x: hidden;
 }
 
 /* Judul besar dengan tulisan berwarna merah */
@@ -134,168 +99,158 @@ p {
   color: #ddd;
   line-height: 1.6;
   margin-bottom: 30px;
-  padding: 0 20px;
 }
 
-/* Tombol Explore Our Packages */
-.trailer-button a {
-  font-size: 20px;
-  padding: 12px 25px;
-  background-color: red;
-  color: white;
+/* Container utama */
+.home {
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === LANDING PAGE === */
+.landing-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  align-items: center;
+  padding: 4vh;
+  background:
+    linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.0) 60%),
+    url('/Images/homePage/car-cover.png') center/cover no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.landing-page .left-container{
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.landing-page .left-container{
+  row-gap: 15px;
+  align-items:start;
+  padding-left: 10vh;
+  margin: 2vh;
+}
+
+.logobwh {
+  width: 520px;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.left-container h1 {
+  font-size: 2.5rem;
+  color: #fff;
+}
+
+.left-container .win {
+  color: #e53935;
+}
+
+.left-container p {
+  color: #f4f4f4;
+  font-size:1.2rem;
+  max-width: 420px;
+  text-align: justify;
+  padding: 0;
+}
+
+.button a {
+  background: #cd0303;
+  color: #fff;
   text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  border: 2px solid transparent;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.2s;
 }
 
-/* Efek hover pada tombol */
-.trailer-button a:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
+.button a:hover {
+  background: #b71c1c;
 }
 
-/* Gambar-gambar lainnya */
-.rectangle {
-  position: absolute;
-  top: 0;
-  height: 100%;
+.left-container .button{
+  padding-top: 2vh;
+}
+
+/* === Abous Us PAGE === */
+.about-us {
   width: 100%;
-  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row; /* Ubah dari column ke row */
+  justify-content: center;
+  align-items: center;
+  padding: 4vh;
+  box-sizing: border-box;
+  background-color: #000000;
+  gap: 24px; /* Tambahkan gap antar kolom, bisa diatur sesuai kebutuhan */
 }
 
-.rectangle:nth-of-type(1) {
-  left: 0;
+.about-us .right-container, .left-container{
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
 }
 
-.rectangle:nth-of-type(2) {
-  right: 0;
+.about-us .right-container{
+  align-items:start;
+  row-gap: 15px;
 }
 
-.thumbnail {
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  object-fit: cover;
+.right-container h1{
+  font-size: 24px;
 }
 
-/* Responsiveness */
-@media screen and (max-width: 768px) {
-  .home-content {
-    width: 90%;
-  }
-
-  h1 {
-    font-size: 40px;
-  }
-
-  .trailer-button a {
-    font-size: 18px;
-    padding: 10px 20px;
-  }
+.right-container h2{
+  font-weight: 700;
+  font-size: 30px;
+  padding-bottom: 20px;
 }
 
-.home-content .trailer-button a{
-    margin-left: 30px;
-    text-align: center;
-    text-decoration: none;
-    margin: auto;
-    width: fit-content;
-    border: solid white;
-    color: white;
-    font-size: 30px;
-    border-width: 4px;
-    padding: 5px 20px;
-    transition: ease-in-out 0.4s;
-    cursor: default;
+.right-container .content-description{
+  text-align: justify;
+  max-width: 500px;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
 }
 
-.home-content .trailer-button a:hover{
-    box-shadow: inset 330px 0 0 0  #CD0303;
-    border-color: #CD0303;
+.right-container .button{
+  padding-top: 4vh;
 }
-.home .rectangle{
-    z-index: 9;
-    position: absolute;
-    height: 100%;
-}
-.rectangle:nth-of-type(1){
-    left: 0;
-}
-.rectangle:nth-of-type(2){
-    right: 0;
-}
-.rectangle:nth-of-type(3){
-    left: 0;
-}
-.thumbnail{
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-}
-
-.thumbnail::before {
-    background-color: rgb(0, 0, 0, 0.2);
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: absolute;
-    content: "";
-}
-.segment-2{
-    position: relative;
-    align-items: center;
-}
-.segment-2 .content-text{
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    right: 50px;
-    color: white;
-    width: 400px;
-    text-align: end;
-    align-items: end;
-}
-.segment-2 .content-text h1{
-    font-size: 70px;
-    margin: 0;
-}
-.segment-2 .content-text .segment-button{
-    color: #CD0303;
-    text-decoration: none;
-    background-color: #EBFF00;
-    padding: 5px 20px;
-    font-size: 30px;
-    border-radius: 10px;
-}
-.segment-2 .content-text p{
-    width: 400px;
-}
-.segment-2 .learn-more-button {
-    color: #0D0E22;
-    text-decoration: none;
-    background-color: #d9d9d9;
-    font-size: 20px;
-    padding: 10px 20px;
-    border-radius: 10px;
-}
-
 /* responsive */
 @media screen and (max-width: 768px){
     .home-content{
         display: flex;
         flex-direction: column;
     }
-    .segment-2 .content-text{
+    .about-us .content-text{
         width: 90%;
         right: 10px;
         text-align: start;
     }
-    .segment-2 .content-text h1{
+    .about-us .content-text h1{
         font-size: 60px;
     }
     .home-content img{
@@ -304,7 +259,7 @@ p {
     .home-content .trailer-button a{
         font-size: 20px;
     }
-    .segment-2 .content-text h1{
+    .about-us .content-text h1{
         font-size: 50px;
     }
 }
