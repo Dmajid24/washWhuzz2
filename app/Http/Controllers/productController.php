@@ -35,4 +35,19 @@ class productController extends Controller
         return response()->json(['error' => 'No valid image uploaded'], 400);
     }
 
+    public function addOrder(Request $request)
+    {
+        $orderData = $request->validate([
+            'product_id' => 'required|exists:products,id',
+            'quantity' => 'required|integer|min:1',
+            'customer_name' => 'required|string|max:255',
+            'customer_address' => 'required|string|max:500',
+        ]);
+
+        // Simulate order creation logic here
+        // For example, you might save the order to a database
+
+        return response()->json(['message' => 'Order placed successfully', 'orderData' => $orderData]);
+    }
+
 }
