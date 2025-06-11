@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-900 text-white">
-    <div class="flex justify-center items-center min-h-screen bg-cover bg-center" style="background-image: url('{{ asset('images/loginBG.png') }}');">
+    <div class="flex justify-center items-center min-h-screen bg-cover bg-center" style="background-image: url('{{ asset('storage/images/loginBG.png') }}');">
         <div class="bg-black bg-opacity-50 p-10 rounded-lg w-full max-w-lg">
             
             <!-- Judul -->

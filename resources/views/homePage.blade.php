@@ -15,15 +15,15 @@
   <body>
     <nav class="fixed top-0 w-full bg-white/10 backdrop-blur-md z-30 transition-transform duration-300">
       <div class="logo-container">
-          <img src="{{ asset('images/homePage/logo.png') }}" alt="Logo" class="logoatas">
+          <img src="{{ asset('storage/images/homePage/logo.png') }}" alt="Logo" class="logoatas">
           <h1>WashWiz</h1>
       </div>
       <ul>
         <li><a style="color: #cd0303" href="./index.html">Home</a></li>
         <li><a href="./about-us.html">About Us</a></li>
-        <li><a href="./product.html">Product</a></li>
+        <li><a href="./product">Product</a></li>
         <li><a href="./order.html">Order</a></li>
-        <li><a class="button-login" href="./login.html">Join Us</a></li>
+        <li><a class="button-login" href="./login">Join Us</a></li>
       </ul>
     </nav>
 
@@ -39,14 +39,14 @@
             </p>
             <!-- Tombol untuk mengeksplorasi paket -->
             <div class="button">
-              <a href="./product.html">EXPLORE OUR PACKAGES</a> 
+              <a href="./product">EXPLORE OUR PACKAGES</a> 
             </div>
           </div> 
         </div>
 
         <div class="about-us">
           <div class="left-container">
-            <img src="{{ asset('images/homePage/logo.png') }}" alt="Logo" class="logobwh">
+            <img src="{{ asset('storage/images/homePage/logo.png') }}" alt="Logo" class="logobwh">
           </div>
           <div class="right-container">
             <div class="content-title">
@@ -80,27 +80,27 @@
               </div>
               <div class="social">
                 <a href="https://discord.com/invite/asphalt9" target="_blank">
-                  <img src="{{ asset('images/homePage/sosmed/discord logo.png') }}" alt="" style="width:50px;height:auto;">
+                  <img src="{{ asset('storage/images/homePage/sosmed/discord logo.png') }}" alt="" style="width:50px;height:auto;">
                 </a>
                 <a href="https://www.facebook.com/AsphaltGame/" target="_blank">
-                  <img src="{{ asset('images/homePage/sosmed/fb logo.png') }}" alt="" style="width:50px;height:auto;">
+                  <img src="{{ asset('storage/images/homePage/sosmed/fb logo.png') }}" alt="" style="width:50px;height:auto;">
                 </a>
                 <a href="https://www.instagram.com/asphaltgames/?hl=en" target="_blank">
-                  <img src="{{ asset('images/homePage/sosmed/ig logo.png') }}" alt="" style="width:50px;height:auto;">
+                  <img src="{{ asset('storage/images/homePage/sosmed/ig logo.png') }}" alt="" style="width:50px;height:auto;">
                 </a>
                 <a href="https://www.tiktok.com/@asphalt_9official?lang=en" target="_blank">
-                  <img src="{{ asset('images/homePage/sosmed/tiktok logo.png') }}" alt="" style="width:50px;height:auto;">
+                  <img src="{{ asset('storage/images/homePage/sosmed/tiktok logo.png') }}" alt="" style="width:50px;height:auto;">
                 </a>
                 <a href="https://x.com/asphalt?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank">
-                  <img src="{{ asset('images/homePage/sosmed/x logo.png') }}" alt="" style="width:50px;height:auto;">
+                  <img src="{{ asset('storage/images/homePage/sosmed/x logo.png') }}" alt="" style="width:50px;height:auto;">
                 </a>
                 <a href="https://www.youtube.com/channel/UC8CcLVQ17w9ucM_yz70L8Kg" target="_blank">
-                  <img src="{{ asset('images/homePage/sosmed/youtube logo.png') }}" alt="TikTok Logo" style="width:50px;height:auto;">
+                  <img src="{{ asset('storage/images/homePage/sosmed/youtube logo.png') }}" alt="TikTok Logo" style="width:50px;height:auto;">
                 </a>
               </div>
             </div>
             <div class="middle">
-              <img src="{{ asset('images/homePage/gojek.png') }}" alt="brand1">
+              <img src="{{ asset('storage/images/homePage/gojek.png') }}" alt="brand1">
               <img src="https://i1.wp.com/mobiklin.id/wp-content/uploads/2020/09/MOBI-LOGOTYPE-SCREEN-3.png?fit=1200%2C372&ssl=1" alt="brand2">
             </div>
             <p>
