@@ -16,7 +16,7 @@
   <div class="subtitle">Choose what you wanna see first!</div>
   <div class="button-group">
     <a href="/profile" class="btn">Profile</a>
-    <a href="/products" class="btn">Products</a>
+    <a href="/product" class="btn">Products</a>
     <a href="message.html" class="btn">Message</a>
     <a href="order.html" class="btn">Order</a>
   </div>

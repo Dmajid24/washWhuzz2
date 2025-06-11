@@ -71,11 +71,11 @@
     padding: 0;
     background-color: #f4f4f4;
   }
-  .content{
+  .product-item content{
     margin-left: 20px;
     margin-right: 20px;
     font-family: inria sans, sans-serif;
-    flex-direction: column;
+    flex-direction: row;
     
   }
   
@@ -125,7 +125,8 @@
     align-items: flex-start;
     text-align: left;
     margin-bottom: 10px;
-    height: 150px;
+  
+    
 }
 
 .product-button{
@@ -156,10 +157,10 @@
 }
 .product-list {
     display: flex;
-
     gap: 20px;
     padding: 20px;
     margin-top: 120px;
+
     
 }
 
@@ -167,7 +168,7 @@
     background-color: #fff;
     color: rgb(0, 0, 0);
     border-radius: 8px;
-    width: 400px; /* Menentukan lebar tetap untuk semua kotak */
+    width: 100%; /* Menentukan lebar tetap untuk semua kotak */
     height: 490px; /* Menentukan tinggi tetap untuk kotak */
     overflow: hidden;
     text-align: center;
@@ -177,6 +178,7 @@
     z-index: 1;  
     display: flex;
     flex-direction: column; /* Mengatur elemen di dalam kotak secara vertikal */
+
 
 
 }

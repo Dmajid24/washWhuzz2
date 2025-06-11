@@ -50,10 +50,10 @@ class authController extends Controller
                 'username' => $req->username, 
                 'password' => $req->password
             ])){
-                return redirect('/')
+                return redirect('/login')
                 ->with('error', 'Username atau password salah!');
             }else{
-                return redirect('/dashboard');
+                return redirect('/homePage');
             }   
         }
 

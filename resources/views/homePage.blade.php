@@ -20,9 +20,9 @@
       </div>
       <ul>
         <li><a style="color: #cd0303" href="./index.html">Home</a></li>
-        <li><a href="./about-us.html">About Us</a></li>
-        <li><a href="./product">Product</a></li>
-        <li><a href="./order.html">Order</a></li>
+        <li><a href="./aboutUs">About Us</a></li>
+        <li><a href="./login">Product</a></li>
+        <li><a href="./login">Order</a></li>
         <li><a class="button-login" href="./login">Join Us</a></li>
       </ul>
     </nav>
@@ -39,7 +39,7 @@
             </p>
             <!-- Tombol untuk mengeksplorasi paket -->
             <div class="button">
-              <a href="./product">EXPLORE OUR PACKAGES</a> 
+              <a href="./login">EXPLORE OUR PACKAGES</a> 
             </div>
           </div> 
         </div>
@@ -61,7 +61,7 @@
                 and trusted techniques to keep your car looking its best
               </p>
               <div class="button">
-                <a href="./product.html">CONTACT US</a> 
+                <a href="./contactUs">CONTACT US</a> 
               </div>
             </div>
             <div class="back-shadow"></div>
