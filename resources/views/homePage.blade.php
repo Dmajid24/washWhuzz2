@@ -17,6 +17,9 @@
       <div class="logo-container">
           <img src="{{ asset('storage/images/homePage/logo.png') }}" alt="Logo" class="logoatas">
           <h1>WashWiz</h1>
+          @if(Auth::check())
+            <p>Welcome, {{ Auth::user()->name }}</p>
+          @endif
       </div>
       <ul>
         <li><a style="color: #cd0303" href="./index.html">Home</a></li>

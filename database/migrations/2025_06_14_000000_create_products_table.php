@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ms_product', function (Blueprint $table) {
-            $table->id("productID");
+        Schema::create('products', function (Blueprint $table) {
+            $table->char('idProduct',5)->primary();
             $table->string('name');
-            $table->text('description') ->nullable();
+            $table->text('description')->nullable();
+            $table->string('image')->nullable(); // URL or path to the product image
+            $table->string('category'); // e.g., electronics, clothing, etc.
             $table->integer('price');
-            $table->string('image');
-            $table->string('category');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('products');
     }
 };

@@ -12,6 +12,9 @@
   </style>
 </head>
 <body>
+  @if(Auth::check())
+    <p>Welcome, {{ Auth::user()->name }}</p>
+@endif
   <h1>WELCOME TO THE <span class="red-italic">WashWiz!</span></h1>
   <div class="subtitle">Choose what you wanna see first!</div>
   <div class="button-group">

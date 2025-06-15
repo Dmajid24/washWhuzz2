@@ -4,14 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WashWuzz</title>
-
+    
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
+    
     <link rel="stylesheet" href="{{ asset('css/nav-footer.css') }}">
     <link rel="stylesheet" href="{{ asset('css/product.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/order.css') }}">
+
     <link href="https://fonts.googleapis.com/css2?family=Magneto&display=swap" rel="stylesheet">
 
     
   </head>
   <body>
+    <script src="{{ asset('js/transaction.js') }}"></script>
     <script src="{{ asset('js/product.js') }}"></script>
         <nav>
             <div class="logo-container">
@@ -22,7 +28,7 @@
               <li><a href="./homePage">HOME</a></li>
               <li><a style="color: #cd0303" href="./product">PRODUCTS</a></li>
               <li><a href="./news.html">NEWS</a></li>
-              <li><a href="./esport.html">ESPORTS</a></li>
+              <li><a href="./order">order</a></li>
               <li><a class="button-download" href="/login">JOIN US</a></li>
             </ul>
         </nav>
@@ -44,6 +50,9 @@
                 <div id="product-list" class="product-list">
                     <!-- Produk akan dimuat di sini -->
                 </div>
+
+                
+
                 
               
             </div>
