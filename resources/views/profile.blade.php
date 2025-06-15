@@ -34,10 +34,10 @@
     <div class="profile-section">
       <img src="welcomee.jpg" alt="Profile" class="avatar" />
       <div class="info">
-        <h2>UserName</h2>
-        <p>UserName@gmail.com</p>
-        <p>+62138953673</p>
-        <p>Alamat</p>
+        <h2>{{Auth::user()->name}}</h2>
+        <p>{{Auth::user()->email}}</p>
+        <p>{{Auth::user()->phone}}</p>
+        <p>{{Auth::user()->address}}</p>
         <button class="edit-btn" onclick="window.location.href = '/editProfile'">Edit Profile</button>
       </div>
     </div>

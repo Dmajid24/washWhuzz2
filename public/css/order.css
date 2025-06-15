@@ -1,4 +1,4 @@
-/* style.css */
+/* style.css
 body {
     font-family: Arial, sans-serif;
     background: #111;
@@ -39,5 +39,193 @@ body {
   #cart-total {
     margin-top: 10px;
     font-weight: bold;
+  }
+   */
+
+   body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #0c0c0c;
+    color: #fff;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: #2a2a2a;
+  }
+  
+  .logo span {
+    font-weight: bold;
+    color: red;
+    font-size: 1.5rem;
+  }
+  
+  nav {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+  }
+  
+  nav a.active {
+    color: red;
+  }
+  
+  .icons span {
+    margin-left: 1rem;
+  }
+  
+  .breadcrumb {
+    margin: 1rem 2rem;
+    font-size: 0.9rem;
+  }
+  
+  .steps {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 2rem;
+  }
+  
+  .step {
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    background: #444;
+    color: #fff;
+    font-size: 0.85rem;
+  }
+  
+  .step.active {
+    background: red;
+  }
+  
+  .cart-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    gap: 2rem;
+  }
+  
+  .cart-container {
+    flex: 3;
+  }
+  
+  .cart-card {
+    display: flex;
+    background: #222;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  
+  .cart-card img {
+    width: 120px;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .item-info {
+    padding: 1rem;
+    flex: 1;
+  }
+  
+  .item-info small {
+    color: #f55;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+  }
+  
+  .item-info h3 {
+    margin: 0.25rem 0;
+  }
+  
+  .qty-price {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .qty-price button {
+    background: #444;
+    color: white;
+    border: none;
+    padding: 0.2rem 0.6rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+  }
+  
+  .qty-price p {
+    margin-left: auto;
+    font-weight: bold;
+  }
+  
+  .promo-code {
+    margin-top: 1rem;
+  }
+  
+  .promo-code input {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    border: 1px solid #ccc;
+    margin-top: 0.5rem;
+  }
+  
+  aside {
+    flex: 1;
+  }
+  
+  .address-box, .summary-box {
+    background: #222;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .change-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    cursor: pointer;
+  }
+  
+  .summary-line {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.3rem 0;
+  }
+  
+  .discount {
+    color: red;
+  }
+  
+  .total {
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-top: 1px solid #555;
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .checkout-btn {
+    margin-top: 1rem;
+    background: yellow;
+    color: black;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.5rem;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
   }
   

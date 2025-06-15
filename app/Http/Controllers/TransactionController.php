@@ -42,8 +42,11 @@ public function addToCart($idProduct, Request $req)
             $cart[$idProduct] = [
                 'name' => $product->name,
                 'price' => $product->price,
+                'category' => $product->category,
                 'image' => $product->image,
             ];
+        }else {
+            $cart[$idProduct]['qty'] += 1;
         }
 
         session()->put('cart', $cart);

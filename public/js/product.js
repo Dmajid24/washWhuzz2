@@ -2,8 +2,6 @@ function showProducts(category) {
     const productList = document.getElementById('product-list');
     productList.innerHTML = '';
 
-    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
     fetch(`/getproducts?category=${category}`)
         .then(response => {
             if (!response.ok) throw new Error('Network response was not ok');
@@ -15,15 +13,37 @@ function showProducts(category) {
                     const productElement = document.createElement('div');
                     productElement.classList.add('product-item');
 
-                    productElement.innerHTML = `
-                        <img src="/storage/images/product/${product.image}" alt="${product.name}">
-                        <div class="content">
-                            <h3>${product.name}</h3>
-                            <div class="productL">${product.description}</div> 
-                            <div class="price">Price: ${product.price}</div>
-                        </div>
-                        <button type="button" class="addButton" onclick="addToCartFromElement(this)">Add</button>
+                    // Buat elemen gambar
+                    const img = document.createElement('img');
+                    img.src = `/storage/images/product/${product.image}`;
+                    img.alt = product.name;
+
+                    // Buat container konten
+                    const contentDiv = document.createElement('div');
+                    contentDiv.classList.add('content');
+                    contentDiv.innerHTML = `
+                        <h3>${product.name}</h3>
+                        <div class="productL">${product.description}</div> 
+                        <div class="price">Price: Rp${product.price}</div>
                     `;
+
+                    // Buat tombol dan tambahkan atribut data secara aman
+                    const button = document.createElement('button');
+                    button.classList.add('addButton');
+                    button.type = 'button';
+                    button.textContent = 'Add';
+
+                    button.setAttribute('data-name', product.name);
+                    button.setAttribute('data-price', product.price);
+                    button.setAttribute('data-image', product.image);
+                    button.setAttribute('data-category', product.category);
+
+                    button.addEventListener('click', () => addToCartFromElement(button));
+
+                    // Gabungkan ke dalam card
+                    productElement.appendChild(img);
+                    productElement.appendChild(contentDiv);
+                    productElement.appendChild(button);
 
                     productList.appendChild(productElement);
                 });
@@ -37,34 +57,33 @@ function showProducts(category) {
         });
 }
 
+
 // ✅ PINDAHKAN fungsi ini KE LUAR agar global (bisa dipanggil dari tombol HTML)
 function addToCartFromElement(button) {
-    const productCard = button.closest('.product-item');
-    const name = productCard.querySelector('h3').textContent;
-    const priceText = productCard.querySelector('.price').textContent;
-    const price = parseInt(priceText.replace(/[^\d]/g, ''));
+    const name = button.getAttribute('data-name');
+    const price = parseInt(button.getAttribute('data-price'));
+    const image = button.getAttribute('data-image');
+    const category = button.getAttribute('data-category');
 
-    // Load cart dari localStorage
+    console.log('Adding to cart:', { name, price, image, category }); // Debug log
+
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     const existing = cart.find(item => item.name === name);
     if (existing) {
         existing.qty += 1;
     } else {
-        cart.push({ name, price, qty: 1 });
+        cart.push({ name, price, qty: 1, image, category });
     }
 
-    // Simpan kembali ke localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
 
     alert(`${name} ditambahkan ke keranjang!`);
 
-    // Jika di halaman order, render ulang cart
+    // Jika di halaman order, render ulang keranjang
     if (window.location.pathname.includes('order')) {
         if (typeof renderCart === 'function') {
-            renderCart(); // dari order.js
+            renderCart();
         }
     }
-
-    console.log('Cart:', JSON.parse(localStorage.getItem('cart')));
 }
