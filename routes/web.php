@@ -1,27 +1,46 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\profileController;
+use App\Http\Controllers\TransactionController;
 
-Route::get('/welcome', function () {
-    return view('welcome');
-})->name('welcome');
-
-Route::get('/homePage', function () {
-    return view('homePage');
-})->name('home'); 
-
-Route::get('/order/{step?}', function ($step = 1) {
-    if (!in_array($step, [1, 2, 3, 4])) {
-        abort(404);
-    }
-    return view('order', ['step' => $step]);
-})->name('order');
+Route::get('/', function () {
+    return redirect('/login');
+});
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/checklogin', [AuthController::class, 'checklogin']);
+Route::get('/register', [AuthController::class, 'register']);
+Route::post('/insertUser', [AuthController::class, 'insertUser']);
 
-Route::get('/register', [authController::class, 'register']);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/homePage', function () {
+        return view('welcome');
+    })->name('home');
 
-Route::post('/insertUser', [authController::class, 'insertUser']);
+    Route::get('/profile', fn() => view('profile'));
+    Route::get('/editProfile', fn() => view('editProfile'))->name('editProfile');
+    Route::post('/profile/update', [profileController::class, 'update'])->name('profile.update');
+    Route::post('/checkout', [TransactionController::class, 'store'])->name('transaction.store');
 
-Route::post('/checklogin', [authController::class, 'checklogin']);
+    Route::get('/transactions/history', [TransactionController::class, 'history'])->name('transaction.history');
+
+    Route::get('/logout', function () {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect('/login');
+    });
+    Route::post('/add-to-cart/{idProduct}', [TransactionController::class, 'addToCart']);
+    Route::get('/order/{step?}', [TransactionController::class, 'showOrderStep'])
+        ->where('step', '[1-4]')
+        ->name('order');
+    Route::post('/order/{step}/process', [TransactionController::class, 'processStep'])
+    ->name('order.process');
+});
+
+Route::get('/product', fn() => view('product'))->name('product');
+Route::get('/getproducts', [ProductController::class, 'getProducts']);
