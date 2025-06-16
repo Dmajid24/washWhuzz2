@@ -12,16 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->char('idTransaction')->primary();
-            $table->char('idUser',5);
-            $table->char('idProduct',5);
+            $table->char('idTransaction', 10)->primary(); // misal: TR001
+            $table->char('idUser', 5);
             $table->date('date');
             $table->integer('total');
-            $table->string('status');
-        
-            $table->foreign('idUser')->references('idUser')->on('users')->onDelete('cascade');
-            $table->foreign('idProduct')->references('idProduct')->on('products');
+            $table->string('status'); // contoh: 'completed', 'pending', 'canceled'
             $table->timestamps();
+
+            $table->foreign('idUser')->references('idUser')->on('users')->onDelete('cascade');
         });
     }
 

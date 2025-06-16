@@ -14,8 +14,9 @@ public function user() {
     return $this->belongsTo(User::class, 'idUser', 'idUser');
 }
 
-public function product() {
-    return $this->belongsTo(Product::class, 'idProduct', 'idProduct');
+public function items()
+{
+    return $this->hasMany(TransactionDetail::class, 'idTransaction', 'idTransaction');
 }
 
 }

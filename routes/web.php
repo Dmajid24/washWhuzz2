@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\profileController;
 use App\Http\Controllers\TransactionController;
 
 Route::get('/', function () {
@@ -21,7 +22,11 @@ Route::middleware(['auth'])->group(function () {
     })->name('home');
 
     Route::get('/profile', fn() => view('profile'));
-    Route::get('/editProfile', fn() => view('editProfile'));
+    Route::get('/editProfile', fn() => view('editProfile'))->name('editProfile');
+    Route::post('/profile/update', [profileController::class, 'update'])->name('profile.update');
+    Route::post('/checkout', [TransactionController::class, 'store'])->name('transaction.store');
+
+    Route::get('/transactions/history', [TransactionController::class, 'history'])->name('transaction.history');
 
     Route::get('/logout', function () {
         Auth::logout();
@@ -29,8 +34,6 @@ Route::middleware(['auth'])->group(function () {
         request()->session()->regenerateToken();
         return redirect('/login');
     });
-
-    Route::post('/checkout', [TransactionController::class, 'checkout']);
     Route::post('/add-to-cart/{idProduct}', [TransactionController::class, 'addToCart']);
     Route::get('/order', [TransactionController::class, 'showCart'])->name('order');
 });

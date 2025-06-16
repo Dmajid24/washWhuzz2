@@ -2,34 +2,70 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Product;
 use App\Models\Transaction;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Models\TransactionDetail;
+use Illuminate\Support\Facades\Auth;
 
 
 class TransactionController extends Controller
 {
-    public function store(Request $req)
-{
-    $product = Product::findOrFail($req->idProduct);
-    $idTransaction = 'TR' . now()->timestamp;
+    public function store(Request $request)
+    {
+        $request->validate([
+            'items' => 'required|array',
+            'items.*.idProduct' => 'required|exists:products,idProduct',
+            'items.*.quantity' => 'required|integer|min:1',
+            'items.*.price' => 'required|integer|min:0',
+            'total' => 'required|integer|min:0',
+        ]);
 
-    $trx = Transaction::create([
-        'idTransaction' => $idTransaction,
-        'idUser' => $req->idUser,
-        'idProduct' => $product->idProduct,
-        'date' => now(),
-        'total' => $product->price,
-        'status' => 'pending'
-    ]);
+        $user = Auth::user();
 
-    return response()->json([
-        'message' => 'Order created',
-        'transaction' => $trx
-    ]);
-}
+        $last = Transaction::max('idTransaction');          // null | "CU007"
+        $seq  = $last ? (int)substr($last, 2) + 1 : 1;
+        $transactionId   = 'tr' . str_pad($seq, 3, '0', STR_PAD_LEFT);
+        // Simpan transaksi utama
+        $transaction = Transaction::create([
+            'idTransaction' => $transactionId,
+            'idUser' => $user->idUser,
+            'date' => Carbon::now(),
+            'total' => $request->total,
+            'status' => 'completed',
+        ]);
+
+        // Simpan setiap item dalam transaksi
+        foreach ($request->items as $item) {
+            TransactionDetail::create([
+                'idTransaction' => $transactionId,
+                'idProduct' => $item['idProduct'],
+                'quantity' => $item['quantity'],
+                'price' => $item['price'],
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'Transaksi berhasil disimpan',
+            'transaction_id' => $transactionId
+        ], 201);
+    }
+
+    public function history()
+    {
+        $user = Auth::user();
+
+        $transactions = Transaction::with(['items.product'])
+            ->where('idUser', $user->idUser)
+            ->orderBy('date', 'desc')
+            ->get();
+
+        return response()->json($transactions);
+    }
+
 
 public function addToCart($idProduct, Request $req)
     {
@@ -59,32 +95,7 @@ public function addToCart($idProduct, Request $req)
         return view('order', compact('cart'));
     }
 
-    public function checkout(Request $request)
-{
-    $cart = $request->cart;
-    $customer = $request->customer;
-
-    $user = Auth::user();
-    if (!$user) {
-        return response()->json(['error' => 'Unauthorized'], 401);
-    }
-
-    foreach ($cart as $item) {
-        $product = Product::where('name', $item['name'])->first();
-        if (!$product) continue;
-
-        Transaction::create([
-            'idTransaction' => Str::uuid(),
-            'idUser' => $user->idUser,
-            'idProduct' => $product->idProduct,
-            'date' => now(),
-            'total' => $item['price'] * $item['qty'],
-            'status' => 'pending',
-        ]);
-    }
-
-    return response()->json(['message' => 'Checkout berhasil!']);
-}
+    
 
 
 }

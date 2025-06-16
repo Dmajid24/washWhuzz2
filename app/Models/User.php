@@ -27,6 +27,9 @@ class User extends Authenticatable
         'role',
         'status',
         'phone',
+        'photo', // path to user photo
+        'birthday', // optional birthday
+        'bio', // optional bio
     ];
 
     protected $hidden = [

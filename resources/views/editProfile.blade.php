@@ -5,43 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Edit Profile</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/editProfile.css') }}">
-  
+  <link rel="stylesheet" href="{{ asset('css/editProfile.css') }}">
 </head>
 <body>
 
   <header>
-    <a href="javascript:history.back()" class="back-button">← Back</a>
+    <a href="profile" class="back-button">← Back</a>
     <h1>Edit Profile</h1>
   </header>
 
   <div class="container">
-    <form onsubmit="saveChanges(event)">
+    <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
+      @csrf
+
       <!-- FOTO PROFIL -->
       <div class="profile-pic-wrapper">
-        <img src="https://via.placeholder.com/120" alt="Profile Picture" id="profilePreview">
+        <img 
+          src="{{ Auth::user()->profile_photo ? asset('storage/' . Auth::user()->profile_photo) : 'https://via.placeholder.com/120' }}" 
+          alt="Profile Picture" 
+          id="profilePreview"
+        >
         <label for="profilePic" class="upload-btn">Change Profile Photo</label>
-        <input type="file" id="profilePic" accept="image/*" onchange="previewImage(event)">
+        <input type="file" id="profilePic" name="profile_photo" accept="image/*" onchange="previewImage(event)">
       </div>
 
       <!-- FORM -->
       <label for="name">Full Name</label>
-      <input type="text" id="name" placeholder="Enter your full name" required>
+      <input type="text" id="name" name="name" value="{{ old('name', Auth::user()->name) }}" required>
 
       <label for="username">Username</label>
-      <input type="text" id="username" placeholder="Enter your username" required>
+      <input type="text" id="username" name="username" value="{{ old('username', Auth::user()->username) }}" required>
 
       <label for="email">Email</label>
-      <input type="email" id="email" placeholder="Enter your email" required>
+      <input type="email" id="email" name="email" value="{{ old('email', Auth::user()->email) }}" required>
 
-      <label for="phone">Phone Number</label>
-      <input type="tel" id="phone" placeholder="Enter your phone number" required>
+      <label for="phone">Phone</label>
+      <input type="tel" id="phone" name="phone" value="{{ old('phone', Auth::user()->phone) }}" required>
 
       <label for="birthday">Birthday</label>
-      <input type="date" id="birthday" required>
+      <input type="date" id="birthday" name="birthday" value="{{ old('birthday', Auth::user()->birthday) }}" required>
 
       <label for="bio">Bio</label>
-      <textarea id="bio" rows="4" placeholder="Tell us a bit about yourself..."></textarea>
+      <textarea id="bio" name="bio" rows="4">{{ old('bio', Auth::user()->bio) }}</textarea>
 
       <button type="submit">Save Changes</button>
     </form>
@@ -55,33 +60,6 @@
         output.src = reader.result;
       }
       reader.readAsDataURL(event.target.files[0]);
-    }
-
-    function saveChanges(e) {
-      e.preventDefault();
-      localStorage.setItem('name', document.getElementById('name').value);
-      localStorage.setItem('username', document.getElementById('username').value);
-      localStorage.setItem('email', document.getElementById('email').value);
-      localStorage.setItem('phone', document.getElementById('phone').value);
-      localStorage.setItem('birthday', document.getElementById('birthday').value);
-      localStorage.setItem('bio', document.getElementById('bio').value);
-
-      const profileImg = document.getElementById('profilePreview').src;
-      localStorage.setItem('profileImg', profileImg);
-
-      window.location.href = 'profile.html';  // After saving, redirect to profile page
-    }
-
-    window.onload = () => {
-      document.getElementById('name').value = localStorage.getItem('name') || '';
-      document.getElementById('username').value = localStorage.getItem('username') || '';
-      document.getElementById('email').value = localStorage.getItem('email') || '';
-      document.getElementById('phone').value = localStorage.getItem('phone') || '';
-      document.getElementById('birthday').value = localStorage.getItem('birthday') || '';
-      document.getElementById('bio').value = localStorage.getItem('bio') || '';
-
-      const profileImg = localStorage.getItem('profileImg');
-      if (profileImg) document.getElementById('profilePreview').src = profileImg;
     }
   </script>
 

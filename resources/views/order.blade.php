@@ -44,12 +44,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>WashWiz - Cart</title>
-  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="{{ asset('css/order.css') }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
   <script src="{{ asset('js/order.js') }}"></script>
   <script src="{{ asset('js/product.js') }}"></script>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
 </head>
 <body>
   <header>
@@ -69,6 +70,7 @@
   <main>
     <div class="breadcrumb">Home > <span>Order</span></div>
     <div class="steps">
+        <button> </button>
       <div class="step active">1 Product Cart</div>
       <div class="step">2 Customer Details</div>
       <div class="step">3 Payment</div>
@@ -141,12 +143,11 @@
         </div>
 
         <div class="summary-box">
-          <h4>Payment Summary</h4>
-          <div class="summary-line"><span>Subtotal</span><span>Rp430.000</span></div>
-          <div class="summary-line discount"><span>Discount Promo</span><span>-Rp50.000</span></div>
-          <div class="summary-line"><span>Others Fee</span><span>Rp3.000</span></div>
-          <div class="summary-line total"><span>Total</span><span>Rp383.000</span></div>
-          <button class="checkout-btn">🛒 Checkout</button>
+            <h4>Payment Summary</h4>
+            <div class="summary-line"><span>Subtotal</span><span></span></div>
+            <div class="summary-line tax"><span>Others Fee</span><span></span></div>
+            <div class="summary-line total"><span>Total</span><span></span></div>
+            <button class="checkout-btn" onclick="handleCheckout()">🛒 Checkout</button>
         </div>
       </aside>
     </section>

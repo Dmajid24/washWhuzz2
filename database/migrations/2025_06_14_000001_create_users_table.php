@@ -21,6 +21,9 @@ return new class extends Migration
             $table->string('password');
             $table->string('city');
             $table->string('province');
+            $table->string('photo')->nullable(); // path to user photo
+            $table->date('birthday')->nullable(); // optional birthday
+            $table->text('bio')->nullable(); // optional bio
             $table->string('role')->default('customer'); // customer, employee, admin
             $table->string('status')->default('inactive'); // active, inactive, etc
             $table->timestamps();
