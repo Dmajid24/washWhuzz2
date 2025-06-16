@@ -3,6 +3,9 @@
 @section('title', 'Order')
 
 @vite(['resources/css/order.css', 'resources/css/app.css'])
+<link rel="stylesheet" href="{{ asset('css/nav-footer.css') }}">
+<link rel="stylesheet" href="{{ asset('css/order.css') }}">
+
 
 @section('content')
 <div class="order-container">
