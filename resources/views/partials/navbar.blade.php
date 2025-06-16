@@ -4,11 +4,11 @@
         <img src="{{ asset('images/homePage/logo.png') }}" alt="Logo" class="logoatas">
         <h1>WashWhuzz</h1>
     </div>
-    <ul>
-        <li><a href="{{ route('home') }}">Home</a></li>
-        <li><a href="{{ '#' }}">About Us</a></li>
-        <li><a href="{{ '#' }}">Product</a></li>
-        <li><a style="color: #cd0303" href="{{ route('order') }}">Order</a></li>
-        <li><a href="{{ '#' }}">Profile</a></li>
+    <ul class="flex items-center gap-9">
+        <li><a href="{{ route('home') }}" class="text-gray-700 hover:text-red-600 transition-colors">Home</a></li>
+        <li><a href="{{ '#' }}" class="text-gray-700 hover:text-red-600 transition-colors">About Us</a></li>
+        <li><a href= "{{ '#' }}" class="text-gray-700 hover:text-red-600 transition-colors">Product</a></li>
+        <li><a href="{{ route('order') }}" class="text-red-600 font-medium hover:text-red-700 transition-colors">Order</a></li>
+        <li><a href="{{ '#' }}" class="text-gray-700 hover:text-red-600 transition-colors">Profile</a></li>
     </ul>
 </nav>

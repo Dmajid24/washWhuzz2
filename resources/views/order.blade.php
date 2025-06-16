@@ -2,10 +2,9 @@
 
 @section('title', 'Order')
 
-@vite(['resources/css/order.css', 'resources/css/app.css'])
-<link rel="stylesheet" href="{{ asset('css/nav-footer.css') }}">
-<link rel="stylesheet" href="{{ asset('css/order.css') }}">
-
+@section('styles')
+    @vite(['resources/css/order.css'])
+@endsection
 
 @section('content')
 <div class="order-container">
@@ -23,8 +22,6 @@
         </div>
         @endforeach
     </div>
-
-
 
     {{-- Main Content Area --}}
     <div class="order-main @if($step >= 2) with-sidebar @endif">
@@ -113,4 +110,3 @@
         <script src="{{ asset('js/order/status.js') }}"></script>
     @endif
 @endsection
-
