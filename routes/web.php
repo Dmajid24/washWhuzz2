@@ -7,10 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\TransactionController;
 
-Route::get('/', function () {
-    return redirect('/login');
-});
-
+Route::post('/insertUser', [authController::class, 'insertUser']);
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/checklogin', [AuthController::class, 'checklogin']);
 Route::get('/register', [AuthController::class, 'register']);
@@ -25,6 +22,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/editProfile', fn() => view('editProfile'))->name('editProfile');
     Route::post('/profile/update', [profileController::class, 'update'])->name('profile.update');
     Route::post('/checkout', [TransactionController::class, 'store'])->name('transaction.store');
+
+    Route::get('/order/{step?}', function ($step = 1) {
+        if (!in_array($step, [1, 2, 3, 4])) {
+            abort(404);
+        }
+        return view('order', ['step' => $step]);
+    })->name('order');
 
     Route::get('/transactions/history', [TransactionController::class, 'history'])->name('transaction.history');
 

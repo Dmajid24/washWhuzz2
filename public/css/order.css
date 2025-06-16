@@ -1,111 +1,4 @@
-/* style.css
-body {
-    font-family: Arial, sans-serif;
-    background: #111;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .container {
-    width: 90%;
-    max-width: 600px;
-    margin: auto;
-    background: #222;
-    padding: 20px;
-    border-radius: 10px;
-  }
-  
-  input, textarea, button {
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-  }
-  
-  button {
-    background-color: yellow;
-    color: black;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  #cart-items div {
-    border-bottom: 1px solid #444;
-    padding: 5px 0;
-  }
-  
-  #cart-total {
-    margin-top: 10px;
-    font-weight: bold;
-  }
-   */
 
-   body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: #0c0c0c;
-    color: #fff;
-  }
-  
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background: #2a2a2a;
-  }
-  
-  .logo span {
-    font-weight: bold;
-    color: red;
-    font-size: 1.5rem;
-  }
-  
-  nav {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-  }
-  
-  nav a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: 500;
-  }
-  
-  nav a.active {
-    color: red;
-  }
-  
-  .icons span {
-    margin-left: 1rem;
-  }
-  
-  .breadcrumb {
-    margin: 1rem 2rem;
-    font-size: 0.9rem;
-  }
-  
-  .steps {
-    display: flex;
-    gap: 1rem;
-    margin: 1rem 2rem;
-  }
-  
-  .step {
-    padding: 0.5rem 1rem;
-    border-radius: 1rem;
-    background: #444;
-    color: #fff;
-    font-size: 0.85rem;
-  }
-  
-  .step.active {
-    background: red;
-  }
-  
   .cart-section {
     display: flex;
     justify-content: space-between;
@@ -119,15 +12,17 @@ body {
   
   .cart-card {
     display: flex;
-    background: #222;
+    outline: 1px solid #000000;
+    background: rgb(255, 255, 255);
     margin-bottom: 1rem;
     border-radius: 1rem;
     overflow: hidden;
+    color: #000;
   }
   
   .cart-card img {
     width: 120px;
-    height: 100%;
+    height: 125px;
     object-fit: cover;
   }
   
@@ -229,3 +124,1077 @@ body {
     cursor: pointer;
   }
   
+@import url('https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* ========== BASE STYLES ========== */
+body {
+    background: #f5f6fa;
+    font-family: 'Overpass', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* ========== NAVIGATION ========== */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 48px;
+    background: #fff;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.03);
+    position: sticky;
+    top: 0;
+    z-index: 30;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logoatas {
+    height: 36px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 36px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 17px;
+    transition: color 0.2s;
+}
+
+nav ul li a.button-login {
+    background: #cd0303;
+    color: #fff;
+    padding: 7px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+nav ul li a.button-login:hover {
+    background: #a80202;
+}
+
+/* ========== ORDER CONTAINER ========== */
+.order-container {
+    max-width: 1200px;
+    margin: 120px auto 40px;
+    padding: 0 24px;
+}
+
+/* Main content wrapper */
+.order-main {
+    display: flex;
+    width: 100%;
+}
+
+.order-layout {
+    max-width: 1200px;
+    display: flex;
+}
+
+/* ========== SIDEBAR (Steps 2-4 only) ========== */
+.order-summary {
+    flex: 0 0 350px; /* Fixed width */
+    top: 140px; /* Below navbar + progress steps */
+    height: fit-content;
+}
+
+.mini-cart-items {
+    max-height: 200px;
+    overflow-y: auto;
+    margin: 1rem 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.mini-cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+/* When sidebar is present (steps 2-4) */
+.order-main.with-sidebar {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+/* Step content should take remaining space */
+.step-content {
+    flex: 1; /* This makes it take all available space */
+    min-width: 0; /* Prevents flex item overflow */
+    width: 100%;
+}
+
+/* ========== PROGRESS STEPS ========== */
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.progress-steps::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #e0e0e0;
+    z-index: 1;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.step-number {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    color: #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.step.active .step-number {
+    background: #cd0303;
+    color: white;
+}
+
+.step-title {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.step.active .step-title {
+    color: #cd0303;
+    font-weight: 500;
+}
+
+/* ========== STEP 1: CART STYLES ========== */
+.order-layout {
+    display: flex;
+    gap: 24px;
+    max-width: 1200px;
+}
+
+.card-list {
+    flex: 2;
+    background: #fff;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.cart-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+}
+
+.cart-desc {
+    color: #888;
+    font-size: 15px;
+    margin-bottom: 24px;
+}
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #ececec;
+    position: relative;
+}
+
+.cart-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-right: 16px;
+    border: 1px solid #eee;
+}
+
+.cart-info {
+    flex: 1;
+}
+
+.cart-category {
+    font-size: 13px;
+    color: #cd0303;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.cart-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+}
+
+.cart-note {
+    font-size: 12px;
+    color: #bdbdbd;
+    cursor: pointer;
+}
+
+.cart-note:hover {
+    text-decoration: underline;
+}
+
+.cart-qty {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+    gap: 8px;
+}
+
+.qty-btn {
+    width: 28px;
+    height: 28px;
+    border: 1px solid #d1d5db;
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+}
+
+.qty-btn:hover {
+    background: #f5f5f5;
+}
+
+.cart-price {
+    font-weight: 600;
+    min-width: 100px;
+    text-align: right;
+    color: #1a1a1a;
+    font-size: 16px;
+}
+
+.remove-item-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #999;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.remove-item-btn:hover {
+    color: #cd0303;
+}
+
+.cart-pagination {
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+    margin: 16px 0;
+}
+
+/* Promo Section */
+.promo-section {
+    margin-top: 32px;
+}
+
+.promo-label {
+    display: block;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+.promo-input-container {
+    display: flex;
+    gap: 12px;
+}
+
+.promo-input {
+    flex: 1;
+    padding: 10px 12px;
+    border: none;
+    border-bottom: 2px solid #ececec;
+    font-size: 15px;
+    outline: none;
+    background: transparent;
+    transition: border 0.2s;
+}
+
+.promo-input:focus {
+    border-bottom: 2px solid #cd0303;
+}
+
+.apply-promo-btn {
+    padding: 10px 16px;
+    background: #cd0303;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.apply-promo-btn:hover {
+    background: #a80202;
+}
+
+.promo-message {
+    margin-top: 8px;
+    padding: 8px;
+    border-radius: 5px;
+    display: none;
+    font-size: 14px;
+}
+
+.promo-message.success {
+    background: #e6f7e6;
+    color: #2e7d32;
+}
+
+.promo-message.error {
+    background: #ffebee;
+    color: #c62828;
+}
+
+/* Sidebar Sections */
+aside {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.address-section, .summary-section {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+.address-title, .summary-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+}
+
+.address-info {
+    margin-bottom: 16px;
+    color: #000;
+}
+
+.address-name {
+    font-weight: 600;
+    color: #cd0303;
+    margin-bottom: 4px;
+}
+
+.address-phone {
+    color: #222;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.address-detail {
+    color: #222;
+    font-size: 14px;
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
+.address-note {
+    color: #bdbdbd;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+.change-address-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    background: white;
+    border: 1.5px solid #cd0303;
+    color: #cd0303;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.change-address-btn:hover {
+    background: #fbeaea;
+}
+
+/* Payment Summary */
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 15px;
+    color: #222;
+}
+
+.summary-row.discount {
+    color: #cd0303;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    margin: 24px 0;
+    padding-top: 16px;
+    border-top: 1px solid #ececec;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 12px;
+    background: #cd0303;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.2s;
+}
+
+.checkout-btn:hover {
+    background: #a80202;
+}
+
+.checkout-btn:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Loading and Empty States */
+.loading-state, .empty-state {
+    padding: 30px;
+    text-align: center;
+    color: #666;
+}
+
+.empty-state {
+    display: none;
+}
+
+.error-message {
+    color: #c62828;
+    padding: 20px;
+    text-align: center;
+    background: #ffebee;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+/* ========== STEP 2: CUSTOMER DETAILS ========== */
+.customer-details-step {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: none;
+}
+
+/* Form layout adjustments */
+.customer-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.customer-details-step h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0a0e32;
+    margin-bottom: 8px;
+}
+
+.customer-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.form-group {
+    padding-bottom: 15px;
+    width: 100%;
+}
+
+.step-description {
+    color: #888;
+    font-size: 15px;
+    margin-bottom: 24px;
+}
+
+.form-section {
+    margin-bottom: 2rem;
+}
+
+.form-section h3 {
+    font-size: 18px;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.form-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: #cd0303;
+}
+
+.click-map {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.map-container {
+    height: 200px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.map-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #888;
+    background: #e0e0e0;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+    font-size: 14px;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: all 0.2s;
+}
+
+input:focus, 
+select:focus, 
+textarea:focus {
+    border-color: #cd0303;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(205, 3, 3, 0.1);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.step-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.btn-prev, 
+.btn-next {
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-prev {
+    background: white;
+    border: 1px solid #cd0303;
+    color: #cd0303;
+}
+
+.btn-next {
+    background: #cd0303;
+    border: 1px solid #cd0303;
+    color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .order-container {
+        margin-top: 100px;
+        padding: 0 16px;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .customer-details-step {
+        padding: 1.5rem;
+    }
+}
+
+/* ========== STEP 3: PAYMENT ========== */
+
+/* Payment Step Styles */
+.payment-step {
+    flex: 1;
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.payment-option {
+    position: relative;
+}
+
+.payment-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.payment-option label {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.payment-option input[type="radio"]:checked + label {
+    border-color: #cd0303;
+    background-color: #fff0f0;
+}
+
+.payment-icon {
+    margin-right: 1rem;
+}
+
+.payment-icon svg {
+    width: 32px;
+    height: 32px;
+    fill: #cd0303;
+}
+
+.payment-info h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+}
+
+.payment-info p {
+    font-size: 14px;
+    color: #666;
+}
+
+.payment-details {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background: #f9f9f9;
+    display: none;
+}
+
+.qr-container {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.qr-code {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 1rem;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.va-details {
+    font-family: monospace;
+}
+
+.va-number {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 1rem 0;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.va-instructions {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.timer-container {
+    text-align: center;
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+.timer-text {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.timer {
+    font-size: 24px;
+    font-weight: 700;
+    color: #cd0303;
+    font-family: monospace;
+}
+
+/* Animation for timer when low */
+.timer.warning {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { color: #cd0303; }
+    50% { color: #ff6b6b; }
+    100% { color: #cd0303; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .payment-step {
+        padding: 1.5rem;
+    }
+    
+    .payment-option label {
+        padding: 1rem;
+    }
+}
+
+/* ========== STEP 4: ORDER STATUS ========== */
+/* Status Step Styles */
+.status-step {
+    flex: 1;
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.tracker-container {
+    display: flex;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.tracker-progress {
+    flex: 1;
+}
+
+.tracker-step {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 2rem;
+}
+
+.tracker-step:last-child {
+    margin-bottom: 0;
+}
+
+.tracker-step::before {
+    content: '';
+    position: absolute;
+    left: 9px;
+    top: 24px;
+    bottom: -26px;
+    width: 2px;
+    background: #e0e0e0;
+}
+
+.tracker-step:last-child::before {
+    display: none;
+}
+
+.tracker-step.active::before {
+    background: #cd0303;
+}
+
+.tracker-bullet {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    border: 4px solid white;
+    box-shadow: 0 0 0 1px #e0e0e0;
+}
+
+.tracker-step.active .tracker-bullet {
+    background: #cd0303;
+    box-shadow: 0 0 0 1px #cd0303;
+}
+
+.tracker-info h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.tracker-info .tracker-time {
+    font-size: 14px;
+    color: #666;
+}
+
+.tracker-map {
+    flex: 1;
+    height: 300px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.map-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #e0e0e0;
+    position: relative;
+}
+
+.map-marker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.marker-pin {
+    width: 20px;
+    height: 20px;
+    background: #cd0303;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+}
+
+.marker-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: rgba(205, 3, 3, 0.3);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    70% {
+        transform: translate(-50%, -50%) scale(3);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+    }
+}
+
+.workers-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+}
+
+.workers-section h3 {
+    font-size: 18px;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+}
+
+.workers-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.worker-card {
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.worker-role {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.worker-name {
+    font-weight: 600;
+    color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .tracker-container {
+        flex-direction: column;
+    }
+    
+    .tracker-map {
+        height: 200px;
+    }
+    
+    .workers-list {
+        grid-template-columns: 1fr;
+    }
+}
+/* ========== STEP NAVIGATION ========== */
+.step-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.btn-prev, .btn-next {
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-prev {
+    background: white;
+    border: 1px solid #cd0303;
+    color: #cd0303;
+}
+
+.btn-next {
+    background: #cd0303;
+    border: 1px solid #cd0303;
+    color: white;
+}
+
+.btn-prev:hover {
+    background: #f5f5f5;
+}
+
+.btn-next:hover {
+    background: #b00202;
+}
+
+/* ========== RESPONSIVE ADJUSTMENTS ========== */
+@media (max-width: 768px) {
+    .order-container {
+        margin-top: 100px;
+        padding: 0 16px;
+    }
+    
+    .order-main.with-sidebar {
+        flex-direction: column;
+    }
+    
+    .order-summary {
+        position: static;
+        width: 100%;
+        margin-top: 2rem;
+    }
+    
+    .customer-form {
+        grid-template-columns: 1fr;
+    }
+    
+    .progress-steps {
+        gap: 0.5rem;
+    }
+    
+    .step-title {
+        font-size: 0.8rem;
+    }
+}

@@ -1,156 +1,118 @@
-{{-- <!-- index.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Order Page</title>
-  <link rel="stylesheet" href="{{ asset('css/order.css') }}">
-  <script src="{{ asset('js/order.js') }}"></script>
-  <script src="{{ asset('js/product.js') }}"></script>
+@extends('layouts.app')
+
+@section('title', 'Order')
+
+@vite(['resources/css/order.css', 'resources/css/app.css'])
+<link rel="stylesheet" href="{{ asset('css/nav-footer.css') }}">
+<link rel="stylesheet" href="{{ asset('css/order.css') }}">
 
 
-</head>
-<body>
-  <div class="container">
-    <h2>Your Cart</h2>
-    
-   <div id="cart-container" class="cart-container">
-        <p>No items in cart.</p>
+@section('content')
+<div class="order-container">
+    {{-- Progress Steps --}}
+    <div class="progress-steps">
+        @foreach([
+            1 => 'Product Cart',
+            2 => 'Customer Details',
+            3 => 'Payment',
+            4 => 'Order Status'
+        ] as $stepNum => $title)
+        <div class="step @if($step >= $stepNum) active @endif" data-step="{{ $stepNum }}">
+            <div class="step-number">{{ $stepNum }}</div>
+            <div class="step-title">{{ $title }}</div>
+        </div>
+        @endforeach
     </div>
 
-    
-
-    <h2>Customer Detail</h2>
-    <form id="customer-form">
-      <input type="text" id="fullname" placeholder="Full Name" required>
-      <input type="tel" id="phone" placeholder="Phone Number" required>
-      <textarea id="address" placeholder="Address" required></textarea>
-    </form>
-
-    <h3>Promo Code</h3>
-    <input type="text" id="promo" placeholder="Enter promo code">
-    <button onclick="checkout()">Checkout</button>
-  </div>
-
-  <script src="script.js"></script>
-</body>
-</html> --}}
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>WashWiz - Cart</title>
-  <link rel="stylesheet" href="{{ asset('css/order.css') }}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
-  <script src="{{ asset('js/order.js') }}"></script>
-  <script src="{{ asset('js/product.js') }}"></script>
-  <meta name="csrf-token" content="{{ csrf_token() }}">
+    {{-- Main Content Area --}}
+    <div class="order-main @if($step >= 2) with-sidebar @endif">
+        {{-- Step Content --}}
+        <div class="step-content">
+            @include('order.steps.' . [
+                1 => 'cart',
+                2 => 'custdetail',
+                3 => 'payment',
+                4 => 'status'
+            ][$step ?? 1])
+        </div>
 
-</head>
-<body>
-  <header>
-    <div class="logo">🧽 <span>WashWiz</span></div>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">About Us</a>
-      <a href="#">Product</a>
-      <a href="#" class="active">Order</a>
-      <div class="icons">
-        <span>🛒</span>
-        <span>👤</span>
-      </div>
-    </nav>
-  </header>
+        {{-- Sidebar (Only for steps 2-4) --}}
+        @if($step >= 2)
+        <aside class="order-summary">
+            <div class="summary-section">
+                <div class="summary-title">Order Summary</div>
+                
+                <div id="cart-summary-list" class="mini-cart-items"></div>
+                
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="summary-subtotal">Rp0</span>
+                </div>
+                <div class="summary-row discount">
+                    <span>Discount</span>
+                    <span id="summary-discount">-Rp0</span>
+                </div>
+                <div class="summary-row">
+                    <span>Admin Fee</span>
+                    <span id="summary-adminfee">Rp3,000</span>
+                </div>
+                <div class="summary-total">
+                    <span>Total</span>
+                    <span id="summary-total">Rp0</span>
+                </div>
 
-  <main>
-    <div class="breadcrumb">Home > <span>Order</span></div>
-    <div class="steps">
-        <button> </button>
-      <div class="step active">1 Product Cart</div>
-      <div class="step">2 Customer Details</div>
-      <div class="step">3 Payment</div>
-      <div class="step">4 Order Status</div>
+                <div class="step-cta" id="step-action-button">
+                    @if($step == 2)
+                        <div class="step-actions">
+                            <button type="submit" class="btn-next" onclick="window.location.href='{{ route('order', ['step' => $step + 1]) }}'">
+                                Continue to Payment
+                            </button>
+                        </div>
+                    @elseif($step == 3)
+                        <div class="step-actions">
+                            <button type="submit" class="btn-next" onclick="window.location.href='{{ route('order', ['step' => $step + 1]) }}'">
+                                Check Order Status
+                            </button>
+                        </div>
+                    @elseif($step == 4)
+                        <button type="submit" class="btn-next">Complete Order</button>
+                    @else
+                        <a href="{{ route('home') }}" class="btn-next">Back to Home</a>
+                    @endif
+                </div>
+            </div>
+        </aside>
+        @endif
     </div>
 
-    <section class="cart-section">
-      <div id="cart-container" class="cart-container">
-        <h2>Your Cart</h2>
-        <p>Check your item before you checkout.</p>
+    {{-- Navigation Buttons --}}
+    <div class="step-actions">
+        @if($step > 1)
+            <button class="btn-prev" onclick="window.location.href='{{ route('order', ['step' => $step - 1]) }}'">
+                Previous
+            </button>
+        @endif
+    </div>
+</div>
+@endsection
 
-        {{-- <div class="cart-card">
-          <img src="img/placeholder.jpg" alt="Exterior Carwash" />
-          <div class="item-info">
-            <small>Cleaning</small>
-            <h3>Exterior Carwash</h3>
-            <div class="qty-price">
-              <button>-</button>
-              <span>1</span>
-              <button>+</button>
-              <p>Rp200.000</p>
-            </div>
-          </div>
-        </div>
+@section('scripts')
+    {{-- Always load shared JS first --}}
+    <script src="{{ asset('js/order/shared.js') }}"></script>
+    <script src="{{ asset('js/order.js') }}"></script>
+    <script src="{{ asset('js/product.js') }}"></script>
+    
+    {{-- Load step-specific JS --}}
+    @if($step == 1)
+        <script src="{{ asset('js/order/cart.js') }}"></script>
+    @elseif($step == 2)
+        <script src="{{ asset('js/order/customer.js') }}"></script>
+    @elseif($step == 3)
+        <script src="{{ asset('js/order/payment.js') }}"></script>
+    @elseif($step == 4)
+        <script src="{{ asset('js/order/status.js') }}"></script>
+    @endif
+@endsection
 
-        <div class="cart-card">
-          <img src="img/placeholder.jpg" alt="Interior Carpet Vacuum" />
-          <div class="item-info">
-            <small>Vacuum</small>
-            <h3>Interior Carpet Vacuum</h3>
-            <div class="qty-price">
-              <button>-</button>
-              <span>1</span>
-              <button>+</button>
-              <p>Rp80.000</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="cart-card">
-          <img src="img/placeholder.jpg" alt="Car Polishing" />
-          <div class="item-info">
-            <small>Detailing</small>
-            <h3>Car Polishing</h3>
-            <div class="qty-price">
-              <button>-</button>
-              <span>1</span>
-              <button>+</button>
-              <p>Rp150.000</p>
-            </div>
-          </div>
-        </div> --}}
-
-        {{-- <div class="promo-code">
-          <p>Have a Promo Code?</p>
-          <input type="text" placeholder="Type Here" />
-        </div> --}}
-      </div>
-
-      <aside>
-        <div class="address-box">
-          <h4>Address Information</h4>
-          <p><strong>{{Auth::user()->name}}</strong><br>
-            {{Auth::user()->phone}}<br>
-            {{Auth::user()->address}}<br>
-            {{Auth::user()->city}}<br>
-            Note: Samping Universitas BINUS
-          </p>
-          <button class="change-btn">Change Address</button>
-        </div>
-
-        <div class="summary-box">
-            <h4>Payment Summary</h4>
-            <div class="summary-line"><span>Subtotal</span><span></span></div>
-            <div class="summary-line tax"><span>Others Fee</span><span></span></div>
-            <div class="summary-line total"><span>Total</span><span></span></div>
-            <button class="checkout-btn" onclick="handleCheckout()">🛒 Checkout</button>
-        </div>
-      </aside>
-    </section>
-  </main>
-</body>
-</html>

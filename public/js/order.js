@@ -42,9 +42,9 @@ function renderCart() {
 
 
     // Update ringkasan harga
-    const subtotalElem = document.querySelector('.summary-box .summary-line:nth-child(2) span:last-child');
-    const taxlElem = document.querySelector('.summary-box .summary-line.tax span:last-child');
-    const totalElem = document.querySelector('.summary-box .summary-line.total span:last-child');
+    const subtotalElem = document.querySelector('.summary-row .summary-line.subtotal span:last-child');
+    const taxlElem = document.querySelector('.summary-row .summary-adminfee span:last-child');
+    const totalElem = document.querySelector('.summary-total span:last-child');
     if (subtotalElem) subtotalElem.innerText = `Rp${total}`;
     if (taxlElem) taxlElem.innerText = `RP ${tax}`; // contoh pajak
     if (totalElem) totalElem.innerText = `Rp${total + tax}`; // contoh diskon dan fee
