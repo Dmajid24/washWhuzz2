@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Edit Profile</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/editProfile.css') }}">
-  
+  <link rel="stylesheet" href="{{ asset('css/editProfile.css') }}">
 </head>
 <body>
 
@@ -17,14 +16,12 @@
 
   <div class="container">
     <form onsubmit="saveChanges(event)">
-      <!-- FOTO PROFIL -->
       <div class="profile-pic-wrapper">
         <img src="https://via.placeholder.com/120" alt="Profile Picture" id="profilePreview">
         <label for="profilePic" class="upload-btn">Change Profile Photo</label>
         <input type="file" id="profilePic" accept="image/*" onchange="previewImage(event)">
       </div>
 
-      <!-- FORM -->
       <label for="name">Full Name</label>
       <input type="text" id="name" placeholder="Enter your full name" required>
 
@@ -69,20 +66,10 @@
       const profileImg = document.getElementById('profilePreview').src;
       localStorage.setItem('profileImg', profileImg);
 
-      window.location.href = 'profile.html';  // After saving, redirect to profile page
+      window.location.href = '/profile';  // After saving, redirect to profile page
     }
 
-    window.onload = () => {
-      document.getElementById('name').value = localStorage.getItem('name') || '';
-      document.getElementById('username').value = localStorage.getItem('username') || '';
-      document.getElementById('email').value = localStorage.getItem('email') || '';
-      document.getElementById('phone').value = localStorage.getItem('phone') || '';
-      document.getElementById('birthday').value = localStorage.getItem('birthday') || '';
-      document.getElementById('bio').value = localStorage.getItem('bio') || '';
-
-      const profileImg = localStorage.getItem('profileImg');
-      if (profileImg) document.getElementById('profilePreview').src = profileImg;
-    }
+  
   </script>
 
 </body>
