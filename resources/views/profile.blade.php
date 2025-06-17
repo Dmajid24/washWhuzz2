@@ -1,60 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Profile - WashWhuuz</title>
-  <link href="https://fonts.goo gleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+@extends('layouts.app')
 
-  <style>
-   
-  </style>
-</head>
-<body>
+@section('title', 'Profile - WashWhuuz')
 
-  <nav>
-    <div class="logo-container">
-      <img src="{{ asset('images/profile/logo.png') }}" alt="Logo" />
-      <a href="#" class="logo-text">WashWhuuz</a>
-    </div>
-    <ul>
-      <li><a href="/homePage">Home</a></li>
-      <li><a href="#">Products</a></li>
-      <li><a href="#">Message</a></li>
-      <li><a href="#">Order</a></li>
-    </ul>
-    <div class="profile-container">
-      <img src="your-profile-image-path.jpg" alt="Profile Image" />
-      <span class="profile-info">Username</span>
-    </div>
-  </nav>
+@section('styles')
+    @vite(['resources/css/nav-footer.css', 'resources/css/profile.css'])
 
-  <div class="container">
+  <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Magneto&display=swap" rel="stylesheet">
+
+@endsection
+
+@section('content')
+<div class="container">
     <div class="profile-section">
-      <img src="welcomee.jpg" alt="Profile" class="avatar" />
-      <div class="info">
-        <h2>{{Auth::user()->name}}</h2>
-        <p>{{Auth::user()->email}}</p>
-        <p>{{Auth::user()->phone}}</p>
-        <p>{{Auth::user()->address}}</p>
-        <button class="edit-btn" onclick="window.location.href = '/editProfile'">Edit Profile</button>
-      </div>
+        <img src="{{ Auth::user()->profile_photo ? asset('storage/' . Auth::user()->profile_photo) : 'welcomee.jpg' }}" alt="Profile" class="avatar" />
+        <div class="info">
+            <h2>{{ Auth::user()->name }}</h2>
+            <p>{{ Auth::user()->email }}</p>
+            <p>{{ Auth::user()->phone }}</p>
+            <p>{{ Auth::user()->address }}</p>
+            <button class="edit-btn" onclick="window.location.href = '{{ route('profile.edit') }}'">Edit Profile</button>
+        </div>
     </div>
 
     <section class="account-section">
-      <h3>Account</h3>
-      <ul class="account-list">
-        <a href="#"><li><span class="icon">📄</span>My Activity</li></a>
-        <a href="#"><li><span class="icon">💳</span>Payment Methods</li></a>
-        <a href="HelpCenter.html"><li><span class="icon">❓</span>Help Center</li></a>
-        <a href="ChangeLanguage.html"><li><span class="icon">🌐</span>Change Language</li></a>
-        <a href="#"><li><span class="icon">🏠</span>Saved Addresses</li></a>
-        <a href="AccountSafety.html"><li><span class="icon">🔒</span>Account Safety</li></a>
-        <a href="ManageAccount.html"><li><span class="icon">⚙️</span>Manage Account</li></a>
-      </ul>
+        <h3>Account</h3>
+        <ul class="account-list">
+            <a href="#"><li><span class="icon">📄</span>My Activity</li></a>
+            <a href="#"><li><span class="icon">💳</span>Payment Methods</li></a>
+            <a href="#"><li><span class="icon">❓</span>Help Center</li></a>
+            <a href="#"><li><span class="icon">🌐</span>Change Language</li></a>
+            <a href="#"><li><span class="icon">🏠</span>Saved Addresses</li></a>
+            <a href="#"><li><span class="icon">🔒</span>Account Safety</li></a>
+            <a href="#"><li><span class="icon">⚙️</span>Manage Account</li></a>
+        </ul>
     </section>
-  </div>
+</div>
+@endsection
 
-</body>
-</html>
+@section('scripts')
+    @vite(['resources/js/profile.js'])
+@endsection

@@ -1,130 +1,99 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WashWuzz</title>
+@extends('layouts.app')
 
-    <link rel="stylesheet" href="{{ asset('css/nav-footer.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/homePage.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Magneto&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+@section('title', 'WashWuzz - Home')
 
+@section('body-class', 'dark-bg') <!-- Default dark background -->
+
+
+@section('styles')
+    @vite(['resources/css/nav-footer.css', 'resources/css/homePage.css'])
     
-  </head>
-  <body>
-    <nav class="fixed top-0 w-full bg-white/10 backdrop-blur-md z-30 transition-transform duration-300">
-      <div class="logo-container">
-          <img src="{{ asset('storage/images/homePage/logo.png') }}" alt="Logo" class="logoatas">
-          <h1>WashWiz</h1>
-          @if(Auth::check())
-            <p>Welcome, {{ Auth::user()->name }}</p>
-          @endif
-      </div>
-      <ul>
-        <li><a style="color: #cd0303" href="./index.html">Home</a></li>
-        <li><a href="./aboutUs">About Us</a></li>
-        <li><a href="./login">Product</a></li>
-        <li><a href="./login">Order</a></li>
-        <li><a class="button-login" href="./login">Join Us</a></li>
-      </ul>
-    </nav>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Magneto&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind via CDN -->
+    @stack('tailwind')
+@endsection
 
-      <div class="home" id="home">
-        <div class="landing-page">
-          <!-- left -->
-          <div class="left-container">
+@section('content')
+<div class="home" id="home">
+    <div class="landing-page" style="background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.0) 60%), url('{{ asset('Images/car-cover.png') }}') center/cover no-repeat;">
+        <!-- Left content -->
+        <div class="left-container">
             <h1>Spotless, Speed, <span class="win">Win</span></h1>
-            <!-- Deskripsi kecil di bawah judul -->
             <p>
-              Discover dynamic and efficient car washing services on our website, from detailed cleaning to comprehensive care, all designed to meet your need for speed and precision.
-              Enjoy the convenience of premium mobile car washing that comes directly to you, blending practicality with stellar results.
+                Discover dynamic and efficient car washing services on our website, from detailed cleaning to comprehensive care, all designed to meet your need for speed and precision.
+                Enjoy the convenience of premium mobile car washing that comes directly to you, blending practicality with stellar results.
             </p>
-            <!-- Tombol untuk mengeksplorasi paket -->
             <div class="button">
-              <a href="./login">EXPLORE OUR PACKAGES</a> 
+                <a href="{{ route('product') }}">EXPLORE OUR PACKAGES</a> 
             </div>
-          </div> 
-        </div>
+        </div> 
+    </div>
 
-        <div class="about-us">
-          <div class="left-container">
-            <img src="{{ asset('storage/images/homePage/logo.png') }}" alt="Logo" class="logobwh">
-          </div>
-          <div class="right-container">
+    <div class="about-us" id="about-us">
+        <div class="left-container">
+            <img src="{{ asset('Images/profile/logo.png') }}" alt="Logo" class="logobwh">
+        </div>
+        <div class="right-container">
             <div class="content-title">
-              <h1>About Us</h1>
+                <h1>About Us</h1>
             </div>
             <div class="content-description">
-              <h2>Driven by Quality, Powered by Care</h2>
-              <p>
-                At WashWhuzz, we believe your car deserves the best. We’re a passionate 
-                team committed to giving every vehicle a spotless shine and exceptional care—every time. 
-                Whether you're looking for a quick exterior clean or a full-service detail, we combine high-quality products, 
-                and trusted techniques to keep your car looking its best
-              </p>
-              <div class="button">
-                <a href="./contactUs">CONTACT US</a> 
-              </div>
+                <h2>Driven by Quality, Powered by Care</h2>
+                <p>
+                    At WashWhuzz, we believe your car deserves the best. We're a passionate 
+                    team committed to giving every vehicle a spotless shine and exceptional care—every time. 
+                    Whether you're looking for a quick exterior clean or a full-service detail, we combine high-quality products, 
+                    and trusted techniques to keep your car looking its best
+                </p>
+                <div class="button">
+                    <a href="{{ '#' }}">CONTACT US</a> 
+                </div>
             </div>
             <div class="back-shadow"></div>
+        </div>
+    </div>
+    <footer class="footer-page">
+      <div class="footer-container">
+        <!-- Upper Section -->
+        <div class="footer-upper">
+          <h1>ARE YOU READY TO <strong>Shine?</strong></h1>
+          <a class="footer-btn" href="./subscription.html">SIGN ME UP</a>
+        </div>
+        <!-- Social Section -->
+        <div class="footer-social">
+          <a href="https://discord.com/invite/asphalt9" target="_blank" aria-label="Discord">
+            <img src="..." alt="Discord">
+          </a>
+          <!-- ...repeat for other social icons... -->
+        </div>
+        <!-- Middle Section -->
+        <div class="footer-middle">
+          <img src="..." alt="Brand1">
+          <img src="..." alt="Brand2">
+        </div>
+        <!-- Info Section -->
+        <div class="footer-info">
+          <p>
+            All Rights Reserved. WashWiz logo and design are trademarks of WashWiz in Indonesia and/or other countries.
+          </p>
+          <ul class="footer-policies">
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Legal Notices</a></li>
+            <li><a href="#">Eula</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+          <div class="footer-copyright">
+            &copy; 2025 WashWiz. All rights reserved.
           </div>
         </div>
-        
-      <div class="footer-page">
-        <footer>
-          <div class="footer-text">
-            <div class="upper">
-              <div class="footer-header">
-                <h1>
-                  ARE YOU READY TO <strong style="color: #cd0303">Shine?</strong>
-                </h1>
-                <a class="footer-button" href="./subscription.html">SIGN ME UP</a>
-              </div>
-              <div class="social">
-                <a href="https://discord.com/invite/asphalt9" target="_blank">
-                  <img src="{{ asset('storage/images/homePage/sosmed/discord logo.png') }}" alt="" style="width:50px;height:auto;">
-                </a>
-                <a href="https://www.facebook.com/AsphaltGame/" target="_blank">
-                  <img src="{{ asset('storage/images/homePage/sosmed/fb logo.png') }}" alt="" style="width:50px;height:auto;">
-                </a>
-                <a href="https://www.instagram.com/asphaltgames/?hl=en" target="_blank">
-                  <img src="{{ asset('storage/images/homePage/sosmed/ig logo.png') }}" alt="" style="width:50px;height:auto;">
-                </a>
-                <a href="https://www.tiktok.com/@asphalt_9official?lang=en" target="_blank">
-                  <img src="{{ asset('storage/images/homePage/sosmed/tiktok logo.png') }}" alt="" style="width:50px;height:auto;">
-                </a>
-                <a href="https://x.com/asphalt?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank">
-                  <img src="{{ asset('storage/images/homePage/sosmed/x logo.png') }}" alt="" style="width:50px;height:auto;">
-                </a>
-                <a href="https://www.youtube.com/channel/UC8CcLVQ17w9ucM_yz70L8Kg" target="_blank">
-                  <img src="{{ asset('storage/images/homePage/sosmed/youtube logo.png') }}" alt="TikTok Logo" style="width:50px;height:auto;">
-                </a>
-              </div>
-            </div>
-            <div class="middle">
-              <img src="{{ asset('storage/images/homePage/gojek.png') }}" alt="brand1">
-              <img src="https://i1.wp.com/mobiklin.id/wp-content/uploads/2020/09/MOBI-LOGOTYPE-SCREEN-3.png?fit=1200%2C372&ssl=1" alt="brand2">
-            </div>
-            <p>
-              All Rights Reserved. WashWiz logo and design are trademarks of WashWiz in Indonesia and/or other countries.
-              All services, techniques, and associated imagery featured in the WashWiz
-              service are trademarks and/or copyrighted materials of their respective owners.
-            </p>
-            <h2 class="copyright">
-              WashWiz trademarks and copyrights are properties of WashWiz.
-            </h2>
-            <ul class="policies">
-              <a href="https://www.gameloft.com/en/conditions-of-use/">Terms & Conditions</a>
-              <a href="https://www.gameloft.com/en/information/legal-notices">Legal Notices</a>
-              <a href="https://www.gameloft.com/en/eula">Eula</a>
-              <a href="https://www.gameloft.com/en/legal/policy-pre-reg/">Cookie Policy</a>
-              <a href="https://www.gameloft.com/en/privacy-notice/">Privacy Policy</a>
-            </ul>
-          </div>
-          <div class="footer-shadow"></div>
-        </footer>
       </div>
-    </div>
-  </body>
-</html>
+    </footer>
+</div>
+@endsection
+
+@section('scripts')
+
+@endsection

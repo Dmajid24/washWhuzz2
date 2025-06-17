@@ -8,6 +8,7 @@ body {
 }
 
 /* ========== ORDER CONTAINER ========== */
+
 .order-container {
     max-width: 1200px;
     margin: 30px auto 40px;
@@ -673,7 +674,13 @@ textarea {
 .payment-icon svg {
     width: 32px;
     height: 32px;
-    fill: #cd0303;
+    fill: #cd0303
+}
+
+.payment-icon-img {
+  width: 28px;
+  height: 28px;
+  fill: #cd0303;
 }
 
 .payment-info h3 {

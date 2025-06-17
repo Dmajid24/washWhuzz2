@@ -104,7 +104,3 @@ async function handleCheckout() {
         alert('Terjadi kesalahan saat checkout.');
     }
 }
-
-  
-  
-  

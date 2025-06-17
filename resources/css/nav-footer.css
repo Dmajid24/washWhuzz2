@@ -2,28 +2,74 @@
 
 /* ========== BASE STYLES ========== */
 body {
-    background: #f5f6fa;
-    font-family: 'Overpass', sans-serif;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100vw;
-    overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+  flex: 1;
+  margin-top: 80px; /* Match navbar height */
+  min-height: calc(100vh - 80px);
+}
+
+/* Landing Page Exception */
+.landing-page {
+  margin-top: -80px !important; /* Tarik konten ke atas */
+  padding-top: 80px !important; /* Kompensasi navbar */
+  min-height: 100vh;
 }
 
 /* ========== NAVIGATION ========== */
+/* Navbar Fixed Positioning */
 nav {
-    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 80px; /* Sesuaikan dengan tinggi navbar */
+    z-index: 1000;
+}
+
+
+nav {
+display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 18px 48px;
-    background: #fff;
-    box-shadow: 0 1px 8px rgba(0,0,0,0.03);
-    position: sticky;
     top: 0;
-    z-index: 30;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 18px 48px;
 }
 
+/* Dark Background (Home, Product, etc) */
+.dark-bg {
+    background: rgba(255, 255, 255, 0.1);
+}
+.dark-bg a {
+    color: white;
+}
+.dark-bg a:hover {
+    color: #ff4d4d;
+}
+
+
+/* Light Background (Order Page) */
+.light-bg {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 1px 8px rgba(0,0,0,0.03);
+}
+.light-bg a {
+    color: #4a5568; /* gray-700 */
+}
+.light-bg a:hover {
+    color: #e53e3e; /* red-600 */
+}
+
+/* Logo Styles */
 .logo-container {
     display: flex;
     align-items: center;
@@ -34,6 +80,7 @@ nav {
     height: 36px;
 }
 
+/* Navigation Links */
 nav ul {
     display: flex;
     list-style: none;
@@ -42,108 +89,64 @@ nav ul {
     padding: 0;
 }
 
-nav ul li a {
-    text-decoration: none;
-    color: #333;
+/* Active & Hover States */
+nav a {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav a:hover {
+    color: #e53e3e !important; /* red-600 */
+}
+
+/* Active Link Indicator */
+nav a.active {
+    color: #e53e3e !important;
     font-weight: 500;
-    font-size: 17px;
-    transition: color 0.2s;
 }
 
-nav ul li a.button-login {
-    background: #cd0303;
-    color: #fff;
-    padding: 7px 18px;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: background 0.2s;
-}
-
-nav ul li a.button-login:hover {
-    background: #a80202;
-}
-
-/* footer */
-footer{
-    position: relative;
-    width: 100%;
-}
-
-.footer-shadow{
+/* Active Link Underline Animation */
+nav a.active::after {
+    content: '';
     position: absolute;
-    background-color: #0D0E22;
+    bottom: -5px;
+    left: 0;
     width: 100%;
-    height: 100%;
-    opacity: 0.9;
+    height: 2px;
+    background: #e53e3e;
 }
 
-.footer-text{
-    display: flex;
-    flex-direction: column;
-    z-index: 1;
-    color: white;
+/* Active Link */
+a.text-red-600 {
+    color: #e53e3e !important;
     position: relative;
-    justify-content: space-around;
-    padding: 40px 80px;
+}
+a.text-red-600::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
     width: 100%;
-    height: 100%;
-}
-.footer-text > *{
-    margin: 0 80px;
-}
-.footer-header a{
-    text-decoration: none;
-    color: #0D0E22;
-    background-color: #EBFF00;
-    padding: 10px 40px;
-    border-radius: 5px;
-    font-weight: 600;
-}
-.copyright{
-    align-self: center;
-}
-footer .middle{
-   
-    gap: 20px;
-}
-footer img{
-    width: 100%;
-}
-strong{
-    color: #CD0303;
-}
-.middle img{
-    display: flex;
-    width: 600px;
-    width: 300px;
-
-}
-.policies{
-    margin: auto;
-}
-.policies a {
-    color: aliceblue;
-    text-decoration: none;
-    border: 2px solid #f0b90b;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    height: 2px;
+    background: #e53e3e;
 }
 
-.policies a:hover {
-    background-color: #f0b90b;
-    color: #181818;
+nav, nav a {
+    transition: all 0.3s ease;
 }
-.social{
-    width: 40px;
-    gap: 30px;
-    display: flex;
-    flex-direction: row;
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-    margin-left: 0.8rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+
+/* Login Button */
+.button-login {
+    background: #cd0303 !important;
+    color: white !important;
+    padding: 7px 18px !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    transition: background 0.2s !important;
+}
+
+.button-login:hover {
+    background: #a80202 !important;
 }
 
 /* responsive */
@@ -171,58 +174,136 @@ strong{
     nav ul li a {
       font-size: 1rem;
     }
-  
-    .footer-text > * {
-      margin: 20px 0;
-    }
-    .policies a {
-        color: aliceblue;
-        text-decoration: none;
-        border: 1px solid #f0b90b;
-        padding: 5px 15px;
-        border-radius: 5px;
-        font-size: 10px;
-        transition: background-color 0.3s ease, color 0.3s ease;
-        display: inline-flex;
-        flex-direction: row;
-    }
-    .footer-header h1{
-        margin-left: 20px;
-        font-size: 20px;
-    }
-    .footer-header a{
-        padding: 5px 10px;
-        font-size: small;
-        margin-left: 20px;
-    }
-    .social{
-        width: 35px;
-        gap: 20px;
-    }
-    .footer-shadow{
-        width: 100%;
-        height: 100%;
-    }
-    .footer-text{
-        display: flex;
-        flex-direction: column;
-        z-index: 1;
-        color: white;
-        position: absolute;
-        justify-content: space-around;
-        width: 50%;
-        height: 50%;
-    }
-    .middle img{
-        margin-left: 20px;
-        margin-top: -400px;
-        width: 40%;
-    }
-    .middle p{
-        font-size: 10px;
-        margin-left: 20px;
-    }
-    .sosial img{
-        margin-right: 10000px;
-    }
   }
+
+  .footer-page {
+  background: linear-gradient(180deg, #0a0b19 0%, #000 100%);
+  color: #fff;
+  font-family: 'Inter', Arial, sans-serif;
+  padding: 48px 0 24px 0;
+  position: relative;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.footer-upper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-upper h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.footer-upper strong {
+  color: #cd0303;
+}
+
+.footer-btn {
+  background: #ebff00;
+  color: #090917;
+  padding: 10px 32px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.footer-btn:hover {
+  background: #ffe600;
+}
+
+.footer-social {
+  display: flex;
+  gap: 18px;
+  margin: 8px 0;
+}
+.footer-social img {
+  width: 36px;
+  height: 36px;
+  filter: grayscale(100%) brightness(1.3);
+  transition: filter 0.2s;
+}
+.footer-social a:hover img {
+  filter: none;
+}
+
+.footer-middle {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.footer-middle img {
+  max-width: 150px;
+  height: auto;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.footer-middle img:hover {
+  opacity: 1;
+}
+
+.footer-info {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 0.95rem;
+  color: #b0b0b0;
+}
+.footer-policies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin: 18px 0 10px 0;
+  padding: 0;
+  list-style: none;
+}
+.footer-policies a {
+  color: #f0b90b;
+  text-decoration: none;
+  padding: 5px 12px;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+  font-size: 0.92rem;
+}
+.footer-policies a:hover {
+  background: #222;
+  color: #fff;
+}
+
+.footer-copyright {
+  color: #666;
+  font-size: 0.85rem;
+  margin-top: 8px;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .footer-container {
+    padding: 0 10px;
+    gap: 22px;
+  }
+  .footer-upper h1 {
+    font-size: 1.1rem;
+  }
+  .footer-middle {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-middle img {
+    max-width: 120px;
+  }
+}

@@ -14,9 +14,9 @@
 <body>
     @include('partials.navbar')
     
-    <main class="pt-20"> <!-- Add padding-top to account for fixed navbar -->
+    <div class="content-wrapper">
         @yield('content')
-    </main>
+    </div>
 
     @yield('scripts')
 </body>

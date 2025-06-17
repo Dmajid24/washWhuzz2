@@ -4,9 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User; // Add this import
 
-class profileController extends Controller
+class ProfileController extends Controller  // Changed to PascalCase (recommended)
 {
+    public function show()
+    {
+        return view('profile', [
+            'user' => Auth::user()
+        ]);
+    }
+
+    public function edit()
+    {
+        return view('editProfile', [
+            'user' => Auth::user()
+        ]);
+    }
+
     public function update(Request $request)
     {
         $user = Auth::user();
@@ -21,7 +36,6 @@ class profileController extends Controller
             'profile_photo' => 'nullable|image|max:2048',
         ]);
 
-        // Upload gambar jika ada
         if ($request->hasFile('profile_photo')) {
             $path = $request->file('profile_photo')->store('profile_photos', 'public');
             $validated['profile_photo'] = $path;
