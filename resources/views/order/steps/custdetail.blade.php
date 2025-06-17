@@ -36,20 +36,25 @@
                     
                     <div class="form-group">
                         <label for="addressArea">Area</label>
-                        <input type="text" id="addressArea" name="addressArea" value="TAMAN PALEM" readonly>
+                        <input type="text" id="addressArea" name="addressArea" value="{{Auth::user()->province}}" readonly>
                     </div>
                     
                     <div class="form-group">
-                        <label for="addressBlock">City</label>
-                        <select id="addressBlock" name="addressBlock" required>
-                            <option value="">Select Block</option>
-                            <!-- Options will be populated by JavaScript -->
-                        </select>
+
+                        <div class="form-group">
+                            <label for="addressBlock">City</label>
+                            <input type="text" id="addressBlock" name="addressBlock" value="{{Auth::user()->city}}" readonly>
+                        </div>
+                            {{-- <label for="addressBlock">City</label>
+                            <select id="addressBlock" name="addressBlock" required>
+                                <option value="">Select Block</option>
+                                <!-- Options will be populated by JavaScript -->
+                            </select> --}}
                     </div>
                     
                     <div class="form-group full-width">
                         <label for="additionalNotes">Street Address</label>
-                        <textarea id="additionalNotes" name="additionalNotes" rows="3"></textarea>
+                        <textarea id="additionalNotes" name="additionalNotes" rows="3">{{Auth::user()->address}}</textarea>
                     </div>
                 </div>
             </form>

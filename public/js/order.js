@@ -1,6 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-    renderCart();
-    document.querySelector('.checkout-btn')?.addEventListener('click', handleCheckout);
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+
+    // Jalankan ini di semua step yang menampilkan summary (step 2, 3, 4)
+    updateSummary(total);
+
+    // Jalankan renderCart hanya di step 1 (cart)
+    if (document.getElementById('cart-container')) {
+        renderCart();
+        document.querySelector('.checkout-btn')?.addEventListener('click', handleCheckout);
+    }
 });
 
 function renderCart() {
@@ -33,22 +43,40 @@ function renderCart() {
             </div>
             <button onclick="removeFromCart(${index})">🗑️</button>
         `;
-       
-        cartContainer.appendChild(itemDiv);
         total += item.price * item.qty;
         tax = total * 0.11; // contoh pajak 11%
+        cartContainer.appendChild(itemDiv);
+
+
+        
     });
 
 
 
     // Update ringkasan harga
-    const subtotalElem = document.querySelector('.summary-row .summary-line.subtotal span:last-child');
-    const taxlElem = document.querySelector('.summary-row .summary-adminfee span:last-child');
-    const totalElem = document.querySelector('.summary-total span:last-child');
+    const subtotalElem = document.querySelector('.summary-line.subtotal span');
+    const taxElem = document.querySelector('.summary-adminfee span');
+    const totalElem = document.querySelector('.summary-total span');
     if (subtotalElem) subtotalElem.innerText = `Rp${total}`;
-    if (taxlElem) taxlElem.innerText = `RP ${tax}`; // contoh pajak
+    if (taxElem) taxElem.innerText = `RP ${tax}`; // contoh pajak
     if (totalElem) totalElem.innerText = `Rp${total + tax}`; // contoh diskon dan fee
+
+   
+    
 }
+
+function updateSummary(total) {
+    const tax = total * 0.11;
+
+    const subtotalElem = document.querySelector('.summary-line.subtotal span');
+    const taxElem = document.querySelector('#summary-adminfee span');
+    const totalElem = document.querySelector('#summary-total');
+
+    if (subtotalElem) subtotalElem.innerText = `Rp${total.toLocaleString('id-ID')}`;
+    if (taxElem) taxElem.innerText = `Rp${tax.toLocaleString('id-ID')}`;
+    if (totalElem) totalElem.innerText = `Rp${(total + tax).toLocaleString('id-ID')}`;
+}
+
 
 function changeQty(index, delta) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];

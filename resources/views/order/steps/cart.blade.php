@@ -59,7 +59,7 @@
             </div>
             <div class="step-cta" id="step-action-button">
             <div class="step-actions">
-                <button type="submit" class="btn-next" onclick="window.location.href='{{ route('order', ['step' => $step + 1]) }}'">
+                <button type="submit" class="btn-next" onclick="window.location.href='{{ url('order/' . ($step + 1)) }}'">
                     Checkout
                 </button>
             </div>

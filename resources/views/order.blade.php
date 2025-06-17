@@ -5,6 +5,8 @@
 @vite(['resources/css/order.css', 'resources/css/app.css'])
 <link rel="stylesheet" href="{{ asset('css/nav-footer.css') }}">
 <link rel="stylesheet" href="{{ asset('css/order.css') }}">
+<script src="{{ asset('js/order.js') }}"></script>
+
 
 
 @section('content')
@@ -42,21 +44,18 @@
         @if($step >= 2)
         <aside class="order-summary">
             <div class="summary-section">
-                <div class="summary-title">Order Summary</div>
-                
-                <div id="cart-summary-list" class="mini-cart-items"></div>
-                
+                <div class="summary-title">Payment Summary</div>
                 <div class="summary-row">
                     <span>Subtotal</span>
-                    <span id="summary-subtotal">Rp0</span>
+                    <div class="summary-line subtotal"><span></span></div>
                 </div>
                 <div class="summary-row discount">
-                    <span>Discount</span>
+                    <span>Discount Promo</span>
                     <span id="summary-discount">-Rp0</span>
                 </div>
                 <div class="summary-row">
                     <span>Admin Fee</span>
-                    <span id="summary-adminfee">Rp3,000</span>
+                    <div id="summary-adminfee" class="summary-adminfee"><span>Rp3,000</span></div>
                 </div>
                 <div class="summary-total">
                     <span>Total</span>
@@ -66,14 +65,14 @@
                 <div class="step-cta" id="step-action-button">
                     @if($step == 2)
                         <div class="step-actions">
-                            <button type="submit" class="btn-next" onclick="window.location.href='{{ route('order', ['step' => $step + 1]) }}'">
-                                Continue to Payment
+                            <button type="submit" class="btn-next" onclick="window.location.href='{{ url('order/' . ($step + 1)) }}'">
+                                Checkout
                             </button>
                         </div>
                     @elseif($step == 3)
                         <div class="step-actions">
-                            <button type="submit" class="btn-next" onclick="window.location.href='{{ route('order', ['step' => $step + 1]) }}'">
-                                Check Order Status
+                            <button type="submit" class="btn-next" onclick="window.location.href='{{ url('order/' . ($step + 1)) }}'">
+                                Checkout
                             </button>
                         </div>
                     @elseif($step == 4)
