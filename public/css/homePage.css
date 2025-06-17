@@ -126,7 +126,7 @@ p {
   padding: 4vh;
   background:
     linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.0) 60%),
-    url('/Images/homePage/car-cover.png') center/cover no-repeat;
+    url('images/mobilmngkilap.jpg') center/cover no-repeat;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -201,7 +201,6 @@ p {
   align-items: center;
   padding: 4vh;
   box-sizing: border-box;
-  background-color: #000000;
   gap: 24px; /* Tambahkan gap antar kolom, bisa diatur sesuai kebutuhan */
 }
 

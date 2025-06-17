@@ -4,12 +4,12 @@ const emptyMsg = document.getElementById('history-empty');
 
 // Hardcoded Order Data
 const orders = [
-//   {
-//     id: 'ORD123456',
-//     date: '2025-06-17T14:30:00Z',
-//     total: 127650,
-//     status: 'completed'
-//   },
+  {
+    id: 'ORD123456',
+    date: '2025-06-18T14:30:00Z',
+    total: 127,
+    status: 'completed'
+  },
 ];
 
 function renderOrders(data) {

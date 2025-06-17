@@ -17,12 +17,11 @@
     
   </head>
   <body>
-    <script src="{{ asset('js/transaction.js') }}"></script>
-    <script src="{{ asset('js/product.js') }}"></script>
+    
     {{-- resources/views/partials/navbar.blade.php --}}
     <nav class="fixed top-0 w-full bg-white/10 backdrop-blur-md z-30 transition-transform duration-300">
       <div class="logo-container">
-          <img src="{{ asset('storage/images/homePage/logo.png') }}" alt="Logo" class="logoatas">
+        <img src="{{ asset('images/profile/logo.png') }}" alt="Logo" class="logoatas">
           <h1>WashWuuz</h1>
       </div>
       <ul>
@@ -43,26 +42,20 @@
               <h1>GALERY OF THE <span class="win">PRODUCT</span></h1>
           
                 <div class="product">
-                    <a href="#" class="product-button" onclick="showProducts('cleaning') ,style='color: #cd0303'">Cleaning</a>
-                    <a href="#" class="product-button" onclick="showProducts('detailing') ,style='color: #cd0303'",>Detailing</a>
-                    <a href="#" class="product-button" onclick="showProducts('vacuum') ,style='color: #cd0303'">Vacuum</a>
-                    <a href="#" class="product-button" onclick="showProducts('wax') ,style='color: #cd0303'">Wax</a>
-                    <a href="#" class="product-button" onclick="showProducts('coating') ,style='color: #cd0303'">Coating</a>
+                    <a href="#" class="product-button" onclick="showProducts('cleaning') ">Cleaning</a>
+                    <a href="#" class="product-button" onclick="showProducts('detailing') ",>Detailing</a>
+                    <a href="#" class="product-button" onclick="showProducts('vacuum') ">Vacuum</a>
+                    <a href="#" class="product-button" onclick="showProducts('wax') ">Wax</a>
+                    <a href="#" class="product-button" onclick="showProducts('coating') ">Coating</a>
                 </div>
                 <div id="product-list" class="product-list">
                     <!-- Produk akan dimuat di sini -->
                 </div>
-
-                
-
-                
-              
             </div>
 
            
             <!-- Gambar-gambar lainnya -->  
             
-            <img class="thumbnail" src="{{ asset('storage/images/product/productBg.png') }}" alt="" />
         </div>
           
       
@@ -122,6 +115,7 @@
             <div class="footer-shadow"></div>
           </footer>
 
-   
+          <script src="{{ asset('js/transaction.js') }}"></script>
+          <script src="{{ asset('js/product.js') }}"></script>
   </body>
 </html>

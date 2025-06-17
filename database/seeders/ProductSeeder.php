@@ -65,7 +65,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'name' => 'Headlight Restoration',
-                'description' => 'Drive safer with clear headlights! Over time, headlights can become foggy or yellowed. Our restoration service brings back the clarity, improving visibility and the overall look of your vehicle. Dont compromise your safety—restore your headlights today!',
+                'description' => 'Drive safer with clear headlights! Over time, headlights can become foggy or yellowed. Our restoration service brings back the clarity, improving visibility and the overall look of your vehicle.',
                 'price' => 250000,
                 'image' => 'Headlight Restoration.png',
                 'category' => 'detailing',

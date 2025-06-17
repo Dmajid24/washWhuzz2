@@ -15,7 +15,7 @@
 
   <nav>
     <div class="logo-container">
-      <img src="{{ asset('images/profile/logo.png') }}" alt="Logo" />
+      <img src="your-profile-image-path.jpg" alt="Profile Image" />
       <a href="#" class="logo-text">WashWhuuz</a>
     </div>
     <ul>

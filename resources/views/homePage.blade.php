@@ -42,31 +42,32 @@
               <a href="./product">EXPLORE OUR PACKAGES</a> 
             </div>
           </div> 
+          <div class="about-us">
+            <div class="left-container">
+              <img src="{{ asset('storage/images/homePage/logo.png') }}" alt="Logo" class="logobwh">
+            </div>
+            <div class="right-container">
+              <div class="content-title">
+                <h1>About Us</h1>
+              </div>
+              <div class="content-description">
+                <h2>Driven by Quality, Powered by Care</h2>
+                <p>
+                  At WashWhuzz, we believe your car deserves the best. We’re a passionate 
+                  team committed to giving every vehicle a spotless shine and exceptional care—every time. 
+                  Whether you're looking for a quick exterior clean or a full-service detail, we combine high-quality products, 
+                  and trusted techniques to keep your car looking its best
+                </p>
+                <div class="button">
+                  <a href="./product.html">CONTACT US</a> 
+                </div>
+              </div>
+              <div class="back-shadow"></div>
+            </div>
+          </div>
         </div>
 
-        <div class="about-us">
-          <div class="left-container">
-            <img src="{{ asset('storage/images/homePage/logo.png') }}" alt="Logo" class="logobwh">
-          </div>
-          <div class="right-container">
-            <div class="content-title">
-              <h1>About Us</h1>
-            </div>
-            <div class="content-description">
-              <h2>Driven by Quality, Powered by Care</h2>
-              <p>
-                At WashWhuzz, we believe your car deserves the best. We’re a passionate 
-                team committed to giving every vehicle a spotless shine and exceptional care—every time. 
-                Whether you're looking for a quick exterior clean or a full-service detail, we combine high-quality products, 
-                and trusted techniques to keep your car looking its best
-              </p>
-              <div class="button">
-                <a href="./product.html">CONTACT US</a> 
-              </div>
-            </div>
-            <div class="back-shadow"></div>
-          </div>
-        </div>
+        
         
       <div class="footer-page">
         <footer>
@@ -76,7 +77,7 @@
                 <h1>
                   ARE YOU READY TO <strong style="color: #cd0303">Shine?</strong>
                 </h1>
-                <a class="footer-button" href="./subscription.html">SIGN ME UP</a>
+                <a class="footer-button" href="./register">SIGN ME UP</a>
               </div>
               <div class="social">
                 <a href="https://discord.com/invite/asphalt9" target="_blank">

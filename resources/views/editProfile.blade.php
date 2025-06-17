@@ -20,13 +20,9 @@
 
       <!-- FOTO PROFIL -->
       <div class="profile-pic-wrapper">
-        <img 
-          src="{{ Auth::user()->photo ? asset('storage/' . Auth::user()->photo) : 'https://via.placeholder.com/120' }}" 
-          alt="Profile Picture" 
-          id="profilePreview"
-        >
+        <img src="https://via.placeholder.com/120" alt="Profile Picture" id="profilePreview">
         <label for="profilePic" class="upload-btn">Change Profile Photo</label>
-        <input type="file" id="profilePic" name="profile_photo" accept="image/*" onchange="previewImage(event)">
+        <input type="file" id="profilePic" accept="image/*" onchange="previewImage(event)">
       </div>
 
       <!-- FORM -->
@@ -61,6 +57,23 @@
       }
       reader.readAsDataURL(event.target.files[0]);
     }
+
+    function saveChanges(e) {
+      e.preventDefault();
+      localStorage.setItem('name', document.getElementById('name').value);
+      localStorage.setItem('username', document.getElementById('username').value);
+      localStorage.setItem('email', document.getElementById('email').value);
+      localStorage.setItem('phone', document.getElementById('phone').value);
+      localStorage.setItem('birthday', document.getElementById('birthday').value);
+      localStorage.setItem('bio', document.getElementById('bio').value);
+
+      const profileImg = document.getElementById('profilePreview').src;
+      localStorage.setItem('profileImg', profileImg);
+
+      window.location.href = 'profile.html';  // After saving, redirect to profile page
+    }
+
+    
   </script>
 
 </body>
