@@ -20,13 +20,14 @@
     </div>
     <ul>
       <li><a href="/homePage">Home</a></li>
-      <li><a href="#">Products</a></li>
-      <li><a href="#">Message</a></li>
-      <li><a href="#">Order</a></li>
+      <li><a href="/product">Products</a></li>
+      <li><a href="/order">Order</a></li>
+      <li><a href="/aboutUs">About Us</a></li>
+
     </ul>
     <div class="profile-container">
-      <img src="your-profile-image-path.jpg" alt="Profile Image" />
-      <span class="profile-info">Username</span>
+      <img src="{{Auth::user()->image}}" alt="Profile Image" />
+      <span class="profile-info">{{Auth::user()->name}}</span>
     </div>
   </nav>
 
@@ -45,7 +46,7 @@
     <section class="account-section">
       <h3>Account</h3>
       <ul class="account-list">
-        <a href="#"><li><span class="icon">📄</span>My Activity</li></a>
+        <a href="/history"><li><span class="icon">📄</span>My Activity</li></a>
         <a href="#"><li><span class="icon">💳</span>Payment Methods</li></a>
         <a href="HelpCenter.html"><li><span class="icon">❓</span>Help Center</li></a>
         <a href="ChangeLanguage.html"><li><span class="icon">🌐</span>Change Language</li></a>

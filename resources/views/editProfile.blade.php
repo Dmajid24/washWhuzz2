@@ -21,7 +21,7 @@
       <!-- FOTO PROFIL -->
       <div class="profile-pic-wrapper">
         <img 
-          src="{{ Auth::user()->profile_photo ? asset('storage/' . Auth::user()->profile_photo) : 'https://via.placeholder.com/120' }}" 
+          src="{{ Auth::user()->photo ? asset('storage/' . Auth::user()->photo) : 'https://via.placeholder.com/120' }}" 
           alt="Profile Picture" 
           id="profilePreview"
         >

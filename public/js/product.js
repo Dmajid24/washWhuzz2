@@ -37,6 +37,8 @@ function showProducts(category) {
                     button.setAttribute('data-price', product.price);
                     button.setAttribute('data-image', product.image);
                     button.setAttribute('data-category', product.category);
+                    button.setAttribute('data-idProduct', product.idProduct); // tambahkan ini
+
 
                     button.addEventListener('click', () => addToCartFromElement(button));
 
@@ -59,31 +61,24 @@ function showProducts(category) {
 
 
 // ✅ PINDAHKAN fungsi ini KE LUAR agar global (bisa dipanggil dari tombol HTML)
-function addToCartFromElement(button) {
-    const name = button.getAttribute('data-name');
-    const price = parseInt(button.getAttribute('data-price'));
-    const image = button.getAttribute('data-image');
-    const category = button.getAttribute('data-category');
 
-    console.log('Adding to cart:', { name, price, image, category }); // Debug log
-
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-    const existing = cart.find(item => item.name === name);
-    if (existing) {
-        existing.qty += 1;
-    } else {
-        cart.push({ name, price, qty: 1, image, category });
-    }
-
-    localStorage.setItem('cart', JSON.stringify(cart));
-
-    alert(`${name} ditambahkan ke keranjang!`);
-
-    // Jika di halaman order, render ulang keranjang
-    if (window.location.pathname.includes('order')) {
-        if (typeof renderCart === 'function') {
-            renderCart();
+    function addToCartFromElement(button) {
+        const idProduct = button.getAttribute('data-idProduct');
+        const name = button.getAttribute('data-name');
+        const price = parseInt(button.getAttribute('data-price'));
+        const image = button.getAttribute('data-image');
+        const category = button.getAttribute('data-category');
+    
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+        const existing = cart.find(item => item.idProduct === idProduct);
+        if (existing) {
+            existing.qty += 1;
+        } else {
+            cart.push({ idProduct, name, price, qty: 1, image, category });
         }
+    
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`${name} ditambahkan ke keranjang!`);
     }
-}
+    

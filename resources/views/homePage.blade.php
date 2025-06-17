@@ -16,16 +16,13 @@
     <nav class="fixed top-0 w-full bg-white/10 backdrop-blur-md z-30 transition-transform duration-300">
       <div class="logo-container">
           <img src="{{ asset('storage/images/homePage/logo.png') }}" alt="Logo" class="logoatas">
-          <h1>WashWiz</h1>
-          @if(Auth::check())
-            <p>Welcome, {{ Auth::user()->name }}</p>
-          @endif
+          <h1>WashWuuz</h1>
       </div>
       <ul>
-        <li><a style="color: #cd0303" href="./index.html">Home</a></li>
-        <li><a href="./aboutUs">About Us</a></li>
-        <li><a href="./login">Product</a></li>
-        <li><a href="./login">Order</a></li>
+        <li><a style="color: #cd0303" href="{{ route('home') }}">Home</a></li>
+        <li><a href="{{ route('washWhuzz') }}">About Us</a></li>
+        <li><a href="{{ route('product') }}">Product</a></li>
+        <li><a href="{{ route('order') }}">Order</a></li>
         <li><a class="button-login" href="./login">Join Us</a></li>
       </ul>
     </nav>
@@ -42,7 +39,7 @@
             </p>
             <!-- Tombol untuk mengeksplorasi paket -->
             <div class="button">
-              <a href="./login">EXPLORE OUR PACKAGES</a> 
+              <a href="./product">EXPLORE OUR PACKAGES</a> 
             </div>
           </div> 
         </div>
@@ -64,7 +61,7 @@
                 and trusted techniques to keep your car looking its best
               </p>
               <div class="button">
-                <a href="./contactUs">CONTACT US</a> 
+                <a href="./product.html">CONTACT US</a> 
               </div>
             </div>
             <div class="back-shadow"></div>
@@ -103,7 +100,7 @@
               </div>
             </div>
             <div class="middle">
-              <img src="{{ asset('storage/images/homePage/gojek.png') }}" alt="brand1">
+              <img src="{{ asset('storage/images/homePage/sosmed/gojek.png') }}" alt="brand1">
               <img src="https://i1.wp.com/mobiklin.id/wp-content/uploads/2020/09/MOBI-LOGOTYPE-SCREEN-3.png?fit=1200%2C372&ssl=1" alt="brand2">
             </div>
             <p>

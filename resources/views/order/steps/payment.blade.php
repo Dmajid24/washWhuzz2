@@ -10,7 +10,7 @@
                     <input type="radio" name="paymentMethod" id="qris" value="qris">
                     <label for="qris">
                         <div class="payment-icon">
-                            <img src="./images/qr-scan.svg" alt="QRIS icon" class="payment-icon-img">
+                            <img src="{{ asset('images/qr.png') }}" alt="QRIS icon" class="payment-icon-img">
                         </div>
                         <div class="payment-info">
                             <h3>QRIS</h3>
@@ -39,5 +39,4 @@
         </div>
     </div>
 
-    <script src="{{ mix('js/order/payment.js') }}"></script>
 </div>

@@ -2,10 +2,12 @@
 
 @section('title', 'Order')
 
-@vite(['resources/css/order.css', 'resources/css/app.css'])
 <link rel="stylesheet" href="{{ asset('css/nav-footer.css') }}">
 <link rel="stylesheet" href="{{ asset('css/order.css') }}">
 <script src="{{ asset('js/order.js') }}"></script>
+<script src="{{ asset('js/product.js') }}"></script>
+
+{{-- Include shared styles --}}
 
 
 
@@ -76,7 +78,7 @@
                             </button>
                         </div>
                     @elseif($step == 4)
-                        <button type="submit" class="btn-next">Complete Order</button>
+                        <a class="btn-next" href="{{ route('home') }}">Complete Order</a>
                     @else
                         <a href="{{ route('home') }}" class="btn-next">Back to Home</a>
                     @endif
@@ -102,6 +104,7 @@
     <script src="{{ asset('js/order/shared.js') }}"></script>
     <script src="{{ asset('js/order.js') }}"></script>
     <script src="{{ asset('js/product.js') }}"></script>
+
     
     {{-- Load step-specific JS --}}
     @if($step == 1)

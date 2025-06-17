@@ -844,6 +844,11 @@ textarea {
 .payment-icon {
     margin-right: 1rem;
 }
+.payment-icon img {
+    width: 32px;
+    height: 32px;
+    margin-right: 1rem;
+}
 
 .payment-icon svg {
     width: 32px;

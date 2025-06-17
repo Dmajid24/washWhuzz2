@@ -19,19 +19,21 @@
   <body>
     <script src="{{ asset('js/transaction.js') }}"></script>
     <script src="{{ asset('js/product.js') }}"></script>
-        <nav>
-            <div class="logo-container">
-              <img src="{{ asset('storage/images/homePage/logo.png') }}" alt="Logo" class="logoatas">
-              <h1>WashWiz</h1>
-            </div>
-            <ul>
-              <li><a href="./homePage">HOME</a></li>
-              <li><a style="color: #cd0303" href="./product">PRODUCTS</a></li>
-              <li><a href="./news.html">NEWS</a></li>
-              <li><a href="./order">order</a></li>
-              <li><a class="button-download" href="/login">JOIN US</a></li>
-            </ul>
-        </nav>
+    {{-- resources/views/partials/navbar.blade.php --}}
+    <nav class="fixed top-0 w-full bg-white/10 backdrop-blur-md z-30 transition-transform duration-300">
+      <div class="logo-container">
+          <img src="{{ asset('storage/images/homePage/logo.png') }}" alt="Logo" class="logoatas">
+          <h1>WashWuuz</h1>
+      </div>
+      <ul>
+        <li><a style="color: #cd0303" href="{{ route('home') }}">Home</a></li>
+        <li><a href="{{ route('washWhuzz') }}">About Us</a></li>
+        <li><a href="{{ route('product') }}">Product</a></li>
+        <li><a href="{{ route('order') }}">Order</a></li>
+        <li><a href="{{ route('profile') }}">Profile</a></li>
+      </ul>
+    </nav>
+
           
       
         <div class="home" id="home">
@@ -42,10 +44,10 @@
           
                 <div class="product">
                     <a href="#" class="product-button" onclick="showProducts('cleaning') ,style='color: #cd0303'">Cleaning</a>
-                    <a href="#" class="product-button" onclick="showProducts('detailing')">Detailing</a>
-                    <a href="#" class="product-button" onclick="showProducts('vacuum')">Vacuum</a>
-                    <a href="#" class="product-button" onclick="showProducts('wax')">Wax</a>
-                    <a href="#" class="product-button" onclick="showProducts('coating')">Coating</a>
+                    <a href="#" class="product-button" onclick="showProducts('detailing') ,style='color: #cd0303'",>Detailing</a>
+                    <a href="#" class="product-button" onclick="showProducts('vacuum') ,style='color: #cd0303'">Vacuum</a>
+                    <a href="#" class="product-button" onclick="showProducts('wax') ,style='color: #cd0303'">Wax</a>
+                    <a href="#" class="product-button" onclick="showProducts('coating') ,style='color: #cd0303'">Coating</a>
                 </div>
                 <div id="product-list" class="product-list">
                     <!-- Produk akan dimuat di sini -->
@@ -118,10 +120,7 @@
               </ul>
             </div>
             <div class="footer-shadow"></div>
-            <img src="{{ asset('storage/images/homePage/footer-thumbnail.png') }}" alt="" />
           </footer>
-
-   
 
    
   </body>

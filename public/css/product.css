@@ -1,7 +1,14 @@
 /* Menata navigasi */
 
 
-
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #333;
+  color: white;
+}
   /* Menata logo dan nama WashWiz */
   .logo-container {
     display: flex;

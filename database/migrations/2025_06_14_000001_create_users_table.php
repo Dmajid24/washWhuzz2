@@ -25,7 +25,7 @@ return new class extends Migration
             $table->date('birthday')->nullable(); // optional birthday
             $table->text('bio')->nullable(); // optional bio
             $table->string('role')->default('customer'); // customer, employee, admin
-            $table->string('status')->default('inactive'); // active, inactive, etc
+            $table->string('status')->default('active'); // active, inactive, etc
             $table->timestamps();
         });
 

@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #f6f6f6;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 100px auto 40px auto; /* beri ruang dari atas untuk navbar */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  /* Style tambahan agar loading/order tampil bagus */
+  #history-loading,
+  #history-empty {
+    font-size: 16px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .order-item {
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+  }
+  
+  .order-item:last-child {
+    border-bottom: none;
+  }
+  
+  .order-info p {
+    margin: 5px 0;
+  }
+  
+  .status {
+    color: green;
+  }
+  
+  .btn-detail {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  

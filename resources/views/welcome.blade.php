@@ -12,16 +12,13 @@
   </style>
 </head>
 <body>
-  @if(Auth::check())
-    <p>Welcome, {{ Auth::user()->name }}</p>
-@endif
+  
   <h1>WELCOME TO THE <span class="red-italic">WashWiz!</span></h1>
   <div class="subtitle">Choose what you wanna see first!</div>
   <div class="button-group">
     <a href="/profile" class="btn">Profile</a>
     <a href="/product" class="btn">Products</a>
-    <a href="message.html" class="btn">Message</a>
-    <a href="order.html" class="btn">Order</a>
+    <a href="/order" class="btn">Order</a>
   </div>
 </body>
 </html>

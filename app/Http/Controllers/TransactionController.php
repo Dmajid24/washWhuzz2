@@ -9,6 +9,7 @@ use App\Models\Transaction;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\TransactionDetail;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -23,9 +24,17 @@ class TransactionController extends Controller
             'items.*.price' => 'required|integer|min:0',
             'total' => 'required|integer|min:0',
         ]);
+        Log::info('Request masuk ke /transaction');
+        Log::info('User:', [auth()->user()]);
+        Log::info('Items:', $request->items);
+        Log::info('Total:', $request->total);
 
+    if (!auth()->check()) {
+        return response()->json(['error' => 'Unauthenticated'], 401);
+    }
         $user = Auth::user();
 
+        
         $last = Transaction::max('idTransaction');          // null | "CU007"
         $seq  = $last ? (int)substr($last, 2) + 1 : 1;
         $transactionId   = 'tr' . str_pad($seq, 3, '0', STR_PAD_LEFT);
@@ -81,6 +90,7 @@ public function addToCart($idProduct, Request $req)
                 'category' => $product->category,
                 'image' => $product->image,
             ];
+            
         }else {
             $cart[$idProduct]['qty'] += 1;
         }

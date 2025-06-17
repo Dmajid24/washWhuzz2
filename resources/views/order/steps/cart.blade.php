@@ -28,14 +28,12 @@
     <aside>
         <div class="address-section">
             <div class="address-title">Address Information</div>
-            <div class="address-loading" id="address-loading">Loading address...</div>
             <div class="address-info" id="address-info" >
                 <div class="address-name" id="address-name">{{Auth::user()->name}}</div>
                 <div class="address-phone" id="address-phone">{{Auth::user()->phone}}</div>
                 <div class="address-detail" id="address-detail">{{Auth::user()->address}}</div>
                 <div class="address-note" id="address-note"></div>
             </div>
-            <button class="change-address-btn" onclick="window.location.href='/profile'">Change Address</button>
         </div>
         
         <div class="summary-section">
@@ -54,7 +52,7 @@
                 
             </div>
             <div class="summary-total">
-                <span>Total</span>
+                <div>Total</div>
                 <span id="summary-total">Rp0</span>
             </div>
             <div class="step-cta" id="step-action-button">

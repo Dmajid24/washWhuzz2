@@ -48,3 +48,74 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.tracker-step')[3].classList.add('active');
     }, 10000);
 });
+
+function handleCheckout() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const items = cart.map(item => ({
+        idProduct: item.idProduct,
+        quantity: item.qty,
+        price: item.price
+    }));
+
+    const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+    fetch('/transaction', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify({ items, total }),
+        credentials: 'same-origin' // ⬅️ Wajib agar cookie session terkirim
+    })
+    
+    .then(async res => {
+        if (res.redirected) {
+            // Redirected berarti kemungkinan ke /login
+            const redirectedUrl = res.url;
+            if (redirectedUrl.includes('/login')) {
+                alert("Kamu belum login! Silakan login terlebih dahulu.");
+                window.location.href = '/login';
+                return;
+            }
+        }
+    
+        const contentType = res.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+            const text = await res.text();
+            throw new Error("Expected JSON but got: " + text.slice(0, 100));
+        }
+    
+        return res.json();
+    })
+    
+    .then(data => {
+        if (data.transaction_id) {
+            alert('Transaksi berhasil!');
+            localStorage.removeItem('cart');
+            window.location.href = '/transaction/success/' + data.transaction_id;
+        } else {
+            alert('Terjadi kesalahan saat menyimpan transaksi.');
+        }
+    })
+    .catch(async (error) => {
+        const responseUrl = error.response?.url || '';
+    
+        if (responseUrl.includes('/login')) {
+            alert('Kamu belum login! Silakan login dulu untuk melakukan transaksi.');
+            window.location.href = '/login';
+            return;
+        }
+    
+        console.error('Checkout error:', error);
+    
+        if (error instanceof Error && error.message.includes('<')) {
+            alert('Server mengembalikan HTML, kemungkinan ada error di backend.');
+        } else {
+            alert('Terjadi kesalahan saat menyimpan transaksi.');
+        }
+    });
+    
+    
+}
