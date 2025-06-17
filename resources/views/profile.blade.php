@@ -214,7 +214,8 @@
 
   <nav>
     <div class="logo-container">
-      <img src="logo.png" alt="Logo" />
+      <img src="{{ asset('images/homePage/logo.png') }}" alt="Logo" class="logoatas">
+      
       <a href="#" class="logo-text">WashWhuuz</a>
     </div>
     <ul>
